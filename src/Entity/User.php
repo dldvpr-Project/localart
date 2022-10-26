@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -37,15 +38,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $name = null;
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): void
-    {
-        $this->name = $name;
-    }
+    #[ORM\Column(type: 'datetime', nullable: false)]
+    private ?DateTimeInterface $created_at;
 
     /**
      * @var string The hashed password
@@ -122,4 +116,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getCreatedAt(): ?DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(?DateTimeInterface $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
 }
