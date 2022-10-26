@@ -13,17 +13,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet email.')]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    private ?int $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank(message: "Le champ ne peut être vide")]
     #[Assert\Email(message: "L'e-mail {{ value }} n'est pas un e-mail valide.")]
-    private ?string $email = null;
+    private ?string $email;
 
     #[ORM\Column(type: 'json')]
     private array $roles = [];
@@ -36,16 +37,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         minMessage: 'Votre pseudo doit comporter au moins {{ limit }} caractères',
         maxMessage: 'Votre pseudo ne peut pas dépasser {{ limit }} caractères',
     )]
-    private ?string $name = null;
-
-    #[ORM\Column(type: 'datetime', nullable: false)]
-    private ?DateTimeInterface $created_at;
+    private ?string $nickname;
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
-    private ?string $password = null;
+    private ?string $password;
 
     public function getId(): ?int
     {
@@ -117,24 +115,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getName(): ?string
+    public function getNickname(): ?string
     {
-        return $this->name;
+        return $this->nickname;
     }
 
-    public function setName(?string $name): void
+    public function setNickname(string $nickname): void
     {
-        $this->name = $name;
-    }
-
-    public function getCreatedAt(): ?DateTimeInterface
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(?DateTimeInterface $created_at): void
-    {
-        $this->created_at = $created_at;
+        $this->nickname = $nickname;
     }
 
 }

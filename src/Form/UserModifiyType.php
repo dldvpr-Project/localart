@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class UserType extends AbstractType
+class UserModifiyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -33,24 +33,6 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'E-mail',
                 'required' => "Le champ E-mail est obligatoire",
-            ])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'required' => true,
-                'first_options' => array('label' => 'Mot de passe*'),
-                'second_options' => array('label' => 'Confirmez votre mot de passe*'),
-                'constraints' => [
-                    new NotBlank(['message' => "Ce champ est obligatoire."]),
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => 'Le mot de passe doit comporter plus de {{ limit }} caractères.'
-                    ])
-                ],
-                'invalid_message' => 'Le mot de passe doit être identique.',
-                'options' => ['attr' => [
-                    'class' => 'password-field',
-                    'placeholder' => "Mot de passe",
-                ]],
             ]);
     }
 
