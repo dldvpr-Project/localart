@@ -6,12 +6,10 @@ use Exception;
 use App\Entity\User;
 use App\Form\UserModifiyType;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 #[Route('/user', name: 'user_')]
@@ -28,13 +26,12 @@ class UserController extends AbstractController
     }
 
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, User $user, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function edit(Request $request, UserRepository $userRepository, User $user): Response
     {
         $form = $this->createForm(UserModifiyType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $editUser = $form->getData();
 
             $userRepository->save($user, true);
             return $this->redirectToRoute('user_index');
