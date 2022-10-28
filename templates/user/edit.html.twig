@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de compte{% endblock %}
+
+{% block body %}
+    {{ include('user/_delete_form.html.twig') }}
+
+    <h1 class="text-primary text-center">Modifier le compte</h1>
+    {{ form_start(form) }}
+
+    <div id="user-form" class="d-flex flex-column align-items-center m-5">
+        <div class="form-row w-50">
+            <div class="form-group">
+                {{ form_row(form.email) }}
+            </div>
+        </div>
+        <div class="form-row w-50">
+            <div class="form-group">
+                {{ form_row(form.nickname) }}
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary mt-4" value="Valider" />
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

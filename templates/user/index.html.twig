@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+    {% for user in users %}
+        {% include 'user/_delete_form.html.twig' %}
+    {% endfor %}
+
+{% endblock %}
