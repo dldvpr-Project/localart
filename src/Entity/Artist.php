@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArtistRepository;
 
+#[ORM\Entity(repositoryClass: ArtistRepository::class)]
 class Artist extends User
 {
     #[ORM\Id]
@@ -12,8 +14,8 @@ class Artist extends User
     #[ORM\Column]
     private ?int $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description;
 
     public function getId(): ?int
     {
@@ -25,9 +27,10 @@ class Artist extends User
         return $this->description;
     }
 
-    public function setDescription(?string $description): void
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
-    }
 
+        return $this;
+    }
 }

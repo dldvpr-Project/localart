@@ -4,8 +4,15 @@
 
 {% block body %}
 
-    {% for user in users %}
-        {% include 'user/_delete_form.html.twig' %}
-    {% endfor %}
-
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-8 d-flex justify-content-between">
+                {% for user in users %}
+                    <p>{{ user.nickName }}</p>
+                    <a class="btn btn-primary" href="{{ path('artist_edit', {id:user.id}) }}">become an artist</a>
+                    {% include 'user/_delete_form.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
