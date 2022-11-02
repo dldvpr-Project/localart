@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\UserModifyType;
 use Exception;
 use App\Entity\User;
-use App\Form\UserModifiyType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +28,7 @@ class UserController extends AbstractController
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, UserRepository $userRepository, User $user): Response
     {
-        $form = $this->createForm(UserModifiyType::class, $user);
+        $form = $this->createForm(UserModifyType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

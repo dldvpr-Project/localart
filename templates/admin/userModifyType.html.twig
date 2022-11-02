@@ -13,6 +13,17 @@
                 {{ form_row(form.nickname) }}
             </div>
         </div>
+        <div class="form-row w-50">
+            <div class="form-group">
+                {{ form_row(form.email) }}
+            </div>
+        </div>
+        <div class="form-row w-50">
+            <div class="form-group">
+                {{ form_row(form.roles) }}
+            </div>
+        </div>
+        {{ form_row(form._token) }}
         <div class="d-flex justify-content-center">
             <input type="submit" class="btn btn-primary mt-4" value="Valider"/>
             {{ include('user/_delete_form.html.twig') }}

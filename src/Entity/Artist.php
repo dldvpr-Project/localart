@@ -5,7 +5,10 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArtistRepository;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
 
+#[DiscriminatorColumn( name: "dtype", type: "string" )]
+#[Discriminator]
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
 class Artist extends User
 {
