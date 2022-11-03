@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Artist;
 use App\Form\UserType;
+use App\Form\AdminArtistType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -40,6 +43,33 @@ class RegistrationController extends AbstractController
         return $this->renderForm('user/new.html.twig', [
             'form' => $form,
             'user' => $user,
+        ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/artist', name: 'artist')]
+    public function add(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    {
+        $artist = new Artist();
+        $form = $this->createForm(AdminArtistType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $artist->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $artist,
+                    $form->get('password')->getData()
+                )
+            );
+            $artist->setRoles(["ROLE_ARTIST"]);
+            $entityManager->persist($artist);
+            $entityManager->flush();
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+
+        }
+        return $this->renderForm('admin/adminArtistType.html.twig', [
+            'form' => $form,
+            'artist' => $artist
         ]);
     }
 }
