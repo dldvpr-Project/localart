@@ -4,8 +4,16 @@
 
 {% block body %}
 
-    {% for user in users %}
-        {% include 'user/_delete_form.html.twig' %}
-    {% endfor %}
-
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-8 d-flex justify-content-between">
+                {% for user in users %}
+                    <p>{{ user.nickName }}</p>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {% include 'user/_delete_form.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

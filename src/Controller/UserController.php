@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use Exception;
 use App\Entity\User;
-use App\Form\UserModifiyType;
+use App\Form\UserModifyType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -28,7 +29,7 @@ class UserController extends AbstractController
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, UserRepository $userRepository, User $user): Response
     {
-        $form = $this->createForm(UserModifiyType::class, $user);
+        $form = $this->createForm(UserModifyType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,6 +44,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
