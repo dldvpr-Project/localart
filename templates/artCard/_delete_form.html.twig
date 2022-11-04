@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('artCard_delete', {'id': artCard.id}) }}" onsubmit="return confirm('Confirmez-vous la suppression de cette art card ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ user.id) }}">
+    <button class="btn btn-secondary text-white mt-4">Supprimer</button>
+</form>
