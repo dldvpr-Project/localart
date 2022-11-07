@@ -12,12 +12,12 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body d-flex flex-column">
                 <form class="d-flex mt-3 mb-5" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-danger" type="submit">Search</button>
                 </form>
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <ul class="navbar-nav flex-grow-1 pe-3">
                     {% if app.user %}
                         {% if is_granted('ROLE_ADMIN') %}
                             <h4 class="text-center">Géstion admin</h4>
@@ -50,21 +50,23 @@
                     <li class="nav-item text-center">
                         <a class="nav-link" href="#">Carte</a>
                     </li>
-                    <div class="d-flex justify-content-between">
-                        {% if app.user %}
+                </ul>
+                <div class="d-flex justify-content-between">
+                    {% if app.user %}
+                    <ul class="navbar-nav flex-grow-1 pe-3">
                         <li class="nav-item text-center">
-                            <a class="nav-link" href="#">Déconnexion</a>
+                            <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
                         </li>
                         {% else %}
-                        <li class="nav-item text-center">
-                            <a class="nav-link" href="#">Connexion</a>
-                        </li>
-                        <li class="nav-item text-center">
-                            <a class="nav-link" href="#">S'inscrire</a>
-                        </li>
-                    </div>
-                    {% endif %}
-                </ul>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" href="{{ path('register_user') }}">S'inscrire</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
