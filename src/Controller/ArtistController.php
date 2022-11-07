@@ -4,9 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Artist;
 use App\Form\ArtistModifyType;
-use Exception;
-use App\Entity\User;
-use App\Form\UserModifyType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
