@@ -17,6 +17,9 @@ class Artist extends User
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description;
 
+    #[ORM\Column(type: 'string')]
+    private ?string $urlProfilPicture;
+
     public function getId(): ?int
     {
         return $this->id = parent::getId();
@@ -30,6 +33,18 @@ class Artist extends User
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getUrlProfilPicture(): ?string
+    {
+        return $this->urlProfilPicture;
+    }
+
+    public function setUrlProfilPicture(?string $urlProfilPicture): self
+    {
+        $this->urlProfilPicture = $urlProfilPicture;
 
         return $this;
     }

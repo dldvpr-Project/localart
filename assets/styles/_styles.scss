@@ -5,11 +5,13 @@
   --text-color: #444;
   --background: #efefef;
 }
+
 /* ---------- FONTS ---------- */
 @font-face {
   font-family: 'Oswald';
   src: url('../fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
 }
+
 /* ---------- GLOBAL POLICIES ---------- */
 
 * {
@@ -29,4 +31,15 @@ ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
+}
+
+/* ---------- FORM ADMIN ARTIST CREATE ---------- */
+
+.card-artistType {
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.area-artisteType {
+  height: 10em;
 }
