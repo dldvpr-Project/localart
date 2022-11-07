@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -43,6 +45,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ArtCard::class)]
+    private Collection $artCards;
+
+    public function __construct()
+    {
+        $this->artCards = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -124,4 +134,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->nickname = $nickname;
     }
 
+    /**
+     * @return Collection<int, ArtCard>
+     */
+    public function getArtCards(): Collection
+    {
+        return $this->artCards;
+    }
+
+    public function addArtCard(ArtCard $artCard): self
+    {
+        if (!$this->artCards->contains($artCard)) {
+            $this->artCards[] = $artCard;
+            $artCard->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArtCard(ArtCard $artCard): self
+    {
+        if ($this->artCards->removeElement($artCard)) {
+            // set the owning side to null (unless already changed)
+            if ($artCard->getUser() === $this) {
+                $artCard->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 }
