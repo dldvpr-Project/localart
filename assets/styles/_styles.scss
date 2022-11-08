@@ -33,6 +33,10 @@ ul {
   margin: 0;
 }
 
+.card {
+  box-shadow: var(--box-shadow);
+}
+
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */
 
 .card-artistType {
@@ -43,3 +47,4 @@ ul {
 .area-artisteType {
   height: 10em;
 }
+
