@@ -48,9 +48,21 @@ ul {
   height: 10em;
 }
 
+/* ---------- ARTIST CARD ---------- */
+
 .artist-card {
-  margin: 0.5em;
-  width: 40em;
-  height: auto;
+  margin: 1.5rem;
+  width: 20rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-img {
+  aspect-ratio: 2/1;
+  object-fit: contain;
+  object-position: 50% 50%;
+  height: 15rem;
 }
 
