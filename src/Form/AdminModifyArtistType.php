@@ -7,6 +7,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -34,8 +35,12 @@ class AdminModifyArtistType extends AbstractType
                 'label' => 'E-mail',
                 'required' => "Le champ E-mail est obligatoire",
             ])
-            ->add('description', TextType::class, [
-                'label' => 'description'
+            ->add('description', TextareaType::class, [
+                'label' => "Description de l'artiste",
+                'attr' => ['class' => 'area-artisteType']
+            ])
+            ->add('urlProfilPicture', TextType::class, [
+                'label' => "Photo de profil",
             ]);
     }
 
