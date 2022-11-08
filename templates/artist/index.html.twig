@@ -5,9 +5,9 @@
 {% block body %}
 
     <div class="container container-lg">
-        <div class="row justify-content-center">
+        <div class="row justify-content-start">
             {% for artist in artists %}
-                <div class="card col-6 col-md-4 d-flex flex-column">
+                <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-2 p-lg-4">
                     <div class="card-header bg-black">
                     <img class=" img-fluid img-thumbnail"
                          src="{{ artist.urlProfilPicture }}"/>
