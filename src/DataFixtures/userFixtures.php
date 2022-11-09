@@ -21,8 +21,7 @@ class userFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        // $product = new Product();
-        // $manager->persist($product);
+
         for ($i = 0; $i < 5; $i++) {
             $user = new user();
             $user->setNickname($faker->userName());
