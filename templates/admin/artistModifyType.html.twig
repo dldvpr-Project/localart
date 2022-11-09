@@ -3,31 +3,31 @@
 {% block title %}Modification d'un artiste{% endblock %}
 
 {% block body %}
-    <div class="container h-75">
+    <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card-artistType card">
-                    <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center m-2">Créer un compte Artiste</h2>
-                        {{ form_start(form) }}
-                        <div class="form-outline mb-4">
-                            {{ form_row(form.nickname) }}
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{ form_row(form.email) }}
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{ form_row(form.urlProfilPicture) }}
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{ form_row(form.description) }}
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="form-control btn btn-outline-success submit px-3" value="Valider">
-                                Modififer
+            <div class="col-12 col-md-8">
+                <div class="card-register card bg-dark text-white">
+                    <div class="card-body p-5 text-center">
+                        <div class="mmt-md-4">
+                            {{ form_start(form) }}
+                            <h2 class="fw-bold mb-2 text-uppercase">Modifier un compte Artiste</h2>
+                            <div class="form-outline form-white mb-4">
+                                {{ form_row(form.nickname) }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form_row(form.email) }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form_row(form.urlProfilPicture) }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form_row(form.description) }}
+                            </div>
+                            <button type="submit" class="btn btn-outline-light btn-lg px-5"
+                                    value="Valider">
+                                Modifier
                             </button>
                         </div>
-                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
