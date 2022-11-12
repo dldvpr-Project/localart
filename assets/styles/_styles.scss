@@ -35,13 +35,19 @@ ul {
 
 .card {
   box-shadow: var(--box-shadow);
+
+form label {
+  font-size: 1rem;
 }
 
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */
 
-.card-artistType {
-  border-radius: 15px;
-  box-shadow: var(--box-shadow);
+.card-register {
+  border-radius: 1.6rem;
+}
+
+.description-artistType {
+  font-size: 0.8rem;
 }
 
 .area-artisteType {
