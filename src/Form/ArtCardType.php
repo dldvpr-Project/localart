@@ -21,15 +21,22 @@ class ArtCardType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Le champ ne peut être vide.']),
                 ]])
-            ->add('description', TextareaType::class, [
-                'label' => 'description',
-            ])
-            ->add('city', TextType::class, [
-                'label' => 'city',
-                'required' => 'Une ville est obligatoire.',
+            ->add('pictureArt', TextType::class, [
+                'label' => 'urlPicture',
+                'required' => 'Une image est obligatoire.',
                 'constraints' => [
                     new NotBlank(['message' => 'Le champ ne peut être vide.']),
-                ]]);
+                ]])
+            ->add('description', TextareaType::class, [
+                'label' => "Description de l'oeuvre",
+                'attr' => ['class' => 'area-artisteType']
+            ])
+        ->add('city', TextType::class, [
+            'label' => 'city',
+            'required' => 'Une ville est obligatoire.',
+            'constraints' => [
+                new NotBlank(['message' => 'Le champ ne peut être vide.']),
+            ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

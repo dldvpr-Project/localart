@@ -32,7 +32,7 @@ class ArtCardController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    #[Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_ARTIST')")]
+    #[Security("is_granted('ROLE_ADMIN')")]
     public function new(Request $request, ArtCardRepository $artCardRepository): Response
     {
         $artCard = new ArtCard();
