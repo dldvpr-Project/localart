@@ -53,7 +53,7 @@ class ArtCardController extends AbstractController
         ]);
     }
 
-    #[Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_ARTIST')")]
+    #[Security("is_granted('ROLE_ADMIN')")]
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
     {
