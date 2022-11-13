@@ -33,15 +33,6 @@ class AdminModifyUserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'E-mail',
                 'required' => "Le champ E-mail est obligatoire",
-            ])
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Artiste' => 'ROLE_ARTIST',
-                ],
-                'multiple' => true,
-                'expanded' => true,
-                'label' => 'Rôles'
             ]);
     }
 
