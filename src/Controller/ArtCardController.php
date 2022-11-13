@@ -6,7 +6,6 @@ use App\Entity\ArtCard;
 use App\Entity\User;
 use App\Form\ArtCardType;
 use App\Repository\ArtCardRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,14 +52,10 @@ class ArtCardController extends AbstractController
         ]);
     }
 
-    #[Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_ARTIST')")]
+    #[Security("is_granted('ROLE_ADMIN')")]
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
     {
-        /** @var User $user */
-        $user = $this->getUser();
-        $createdBy = $artCard->getUser();
-
         $form = $this->createForm(ArtCardType::class, $artCard);
         $form->handleRequest($request);
 

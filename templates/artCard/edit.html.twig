@@ -1,32 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification d'art card{% endblock %}
+    {% block title %}Modification d'une oeuvre{% endblock %}
 
-{% block body %}
-
-    <h1 class="text-primary text-center">Modifier l'art card</h1>
-    {{ form_start(form) }}
-
-    <div id="user-form" class="d-flex flex-column align-items-center m-5">
-        <div class="form-row w-50">
-            <div class="form-group">
-                {{ form_row(form.title) }}
+    {% block body %}
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8">
+                    <div class="card-register card bg-dark text-white">
+                        <div class="card-body p-5 text-center">
+                            <div class="mt-md-4">
+                                {{ form_start(form) }}
+                                <h2 class="fw-bold mb-2 text-uppercase">Modifier une oeuvre</h2>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.title) }}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.pictureArt) }}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.description) }}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.city) }}
+                                </div>
+                                {{ form_row(form._token) }}
+                                <button type="submit" class="btn btn-outline-light btn-lg px-5"
+                                        value="Valider">
+                                    Modifier
+                                </button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-                {{ form_row(form.description) }}
-            </div>
-        </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-                {{ form_row(form.city) }}
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <input type="submit" class="btn btn-primary mt-4" value="Valider" />
-        </div>
-    </div>
-    {{ form_row(form._token) }}
-    {{ form_end(form) }}
-{% endblock %}
+    {% endblock %}
+
