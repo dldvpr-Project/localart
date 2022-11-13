@@ -6,7 +6,6 @@ use App\Entity\ArtCard;
 use App\Entity\User;
 use App\Form\ArtCardType;
 use App\Repository\ArtCardRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
