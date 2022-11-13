@@ -33,6 +33,9 @@ ul {
   margin: 0;
 }
 
+.card {
+  box-shadow: var(--box-shadow);
+
 form label {
   font-size: 1rem;
 }
@@ -49,6 +52,24 @@ form label {
 
 .area-artisteType {
   height: 10em;
+}
+
+/* ---------- ARTIST CARD ---------- */
+
+.artist-card {
+  margin: 1.5rem;
+  width: 20rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-img {
+  aspect-ratio: 2/1;
+  object-fit: contain;
+  object-position: 50% 50%;
+  height: 15rem;
 }
 
 /* ---------- FORM LOGIN ---------- */
