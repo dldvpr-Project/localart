@@ -17,10 +17,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/', name: 'index')]
+    #[Route('/admin', name: 'index')]
     public function index(UserRepository $userRepository): Response
     {
-        $users = $userRepository->findAll();
+        $users = $userRepository->findUserByRole();
 
         return $this->render('user/index.html.twig', [
             'users' => $users
