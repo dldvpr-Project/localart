@@ -6,7 +6,6 @@ use App\Entity\ArtCard;
 use App\Entity\User;
 use App\Form\ArtCardType;
 use App\Repository\ArtCardRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +31,7 @@ class ArtCardController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    #[Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_ARTIST')")]
+    #[Security("is_granted('ROLE_ADMIN')")]
     public function new(Request $request, ArtCardRepository $artCardRepository): Response
     {
         $artCard = new ArtCard();

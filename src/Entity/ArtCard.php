@@ -18,8 +18,12 @@ class ArtCard
     #[ORM\Column]
     private ?int $id;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $title;
+
+    #[ORM\Column(length: 255, nullable: false)]
+    #[Assert\NotBlank(message: "Le champ ne peut être vide.")]
+    private ?string $pictureArt;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description;
@@ -97,6 +101,18 @@ class ArtCard
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPictureArt(): ?string
+    {
+        return $this->pictureArt;
+    }
+
+    public function setPictureArt(string $pictureArt): self
+    {
+        $this->pictureArt = $pictureArt;
 
         return $this;
     }
