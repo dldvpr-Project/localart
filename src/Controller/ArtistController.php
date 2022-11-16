@@ -22,7 +22,26 @@ class ArtistController extends AbstractController
 
         return $this->render('artist/index.html.twig', [
             'artists' => $artists,
-            ]);
+        ]);
+    }
+
+    #[Route('/profil', name: 'profil')]
+    public function show(ArtistRepository $artistRepository): Response
+    {
+
+        if ($this->getUser() === null) {
+            return $this->redirectToRoute('artist_showAll');
+        }
+
+        /** @var User $user * */
+        $user = $this->getUser();
+        $artistId = $user->getId();
+
+        $artist = $artistRepository->findOneBy(['id' => $artistId]);
+
+        return $this->render('artist/profil.html.twig', [
+            '$artist' => $artist
+        ]);
     }
 
 }
