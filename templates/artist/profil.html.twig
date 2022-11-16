@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier mon compte{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
     <div class="container-fluid container-lg mt-3">
@@ -9,14 +9,13 @@
                     <img class="card-img img-fluid img-thumbnail bg-black"
                          src="https://via.placeholder.com/300" alt="This is a place holder"/>
                     <div class="mt-1 card-body">
-                        <h1 class="card-title m-0 text-center">{{ artist.nickName }}</h1>
+                        <h1 class="card-title m-0 text-center">{{ artist.nickname }}</h1>
                         <div class="d-flex justify-content-around">
                             <a href="{{ path('artist_edit') }}"
                                class="btn btn-success text-white">Edit</a>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
         </div>
     </div>
 {% endblock %}

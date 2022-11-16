@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Artist;
 use App\Entity\User;
+use App\Entity\Artist;
 use App\Form\ArtistModifyType;
 use App\Repository\ArtistRepository;
-use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,26 +40,32 @@ class ArtistController extends AbstractController
         $artist = $artistRepository->findOneBy(['id' => $artistId]);
 
         return $this->render('artist/profil.html.twig', [
-            '$artist' => $artist
+            'artist' => $artist
         ]);
     }
 
-    #[Route('/modify-profil', name: 'edit')]
-    public function edit(ArtistRepository $artistRepository): Response
+    #[Route('/modify-profil', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, ArtistRepository $artistRepository): Response
     {
-
         if ($this->getUser() === null) {
             return $this->redirectToRoute('artist_showAll');
         }
 
-        /** @var User $user * */
-        $user = $this->getUser();
-        $artistId = $user->getId();
+        /** @var User $user */
+        $artist = $this->getUser();
 
-        $artist = $artistRepository->findOneBy(['id' => $artistId]);
+        $form = $this->createForm(ArtistModifyType::class, $artist);
+        $form->handleRequest($request);
 
-        return $this->render('artist/profil.html.twig', [
-            '$artist' => $artist
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $artistRepository->save($artist, true);
+            return $this->redirectToRoute('artist_profil');
+        }
+
+        return $this->renderForm('artist/edit.html.twig', [
+            'form' => $form,
+            'artist' => $artist
         ]);
     }
 
