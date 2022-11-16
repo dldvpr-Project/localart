@@ -24,11 +24,5 @@ class ArtistController extends AbstractController
             'artists' => $artists,
             ]);
     }
-
-    #[Route('/profil'), name: 'profil']
-    public function show(): Response
-    {
-
-    }
-
+    
 }
