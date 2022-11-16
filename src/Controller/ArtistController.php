@@ -24,5 +24,5 @@ class ArtistController extends AbstractController
             'artists' => $artists,
             ]);
     }
-    
+
 }
