@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Artist;
+use App\Entity\User;
 use App\Form\ArtistModifyType;
 use App\Repository\ArtistRepository;
 use App\Repository\UserRepository;
@@ -27,6 +28,25 @@ class ArtistController extends AbstractController
 
     #[Route('/profil', name: 'profil')]
     public function show(ArtistRepository $artistRepository): Response
+    {
+
+        if ($this->getUser() === null) {
+            return $this->redirectToRoute('artist_showAll');
+        }
+
+        /** @var User $user * */
+        $user = $this->getUser();
+        $artistId = $user->getId();
+
+        $artist = $artistRepository->findOneBy(['id' => $artistId]);
+
+        return $this->render('artist/profil.html.twig', [
+            '$artist' => $artist
+        ]);
+    }
+
+    #[Route('/modify-profil', name: 'edit')]
+    public function edit(ArtistRepository $artistRepository): Response
     {
 
         if ($this->getUser() === null) {
