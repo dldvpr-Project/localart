@@ -25,4 +25,10 @@ class ArtistController extends AbstractController
             ]);
     }
 
+    #[Route('/profil'), name: 'profil']
+    public function show(): Response
+    {
+
+    }
+
 }

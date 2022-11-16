@@ -30,6 +30,11 @@ class UserController extends AbstractController
     #[Route('/profil', name: 'show')]
     public function show(UserRepository $userRepository): Response
     {
+
+        if ($this->getUser() === null) {
+            return $this->redirectToRoute('artist_showAll');
+        }
+
         /** @var User $user **/
         $user = $this->getUser();
         $userId = $user->getId();
