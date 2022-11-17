@@ -23,7 +23,7 @@ class ArtCardController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(ArtCardRepository $artCardRepository): Response
     {
-        $artCards = $artCardRepository->findAll();
+        $artCards = $artCardRepository->findBy(['pending' => true]);
 
         return $this->render('artCard/index.html.twig', [
             'artCards' => $artCards
