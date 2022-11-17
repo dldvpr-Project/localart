@@ -27,16 +27,42 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, UserRepository $userRepository, User $user): Response
+    #[Route('/profil', name: 'show')]
+    public function show(UserRepository $userRepository): Response
     {
+
+        if ($this->getUser() === null) {
+            return $this->redirectToRoute('artist_showAll');
+        }
+
+        /** @var User $user **/
+        $user = $this->getUser();
+        $userId = $user->getId();
+
+        $user = $userRepository->findOneBy(['id' => $userId]);
+
+        return $this->render('user/profil.html.twig', [
+           'user' => $user
+        ]);
+    }
+
+    #[Route('/modify-profil', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, UserRepository $userRepository): Response
+    {
+        if ($this->getUser() === null) {
+            return $this->redirectToRoute('artist_showAll');
+        }
+
+        /** @var User $user */
+        $user = $this->getUser();
+
         $form = $this->createForm(UserModifyType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $userRepository->save($user, true);
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('user_show');
         }
 
         return $this->renderForm('user/edit.html.twig', [
