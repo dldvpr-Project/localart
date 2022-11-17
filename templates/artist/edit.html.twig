@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification de mon profil{% endblock %}
+{% block title %}Modifier mon compte{% endblock %}
 
 {% block body %}
     <div class="container py-5 h-100">
@@ -10,7 +10,9 @@
                     <div class="card-body p-5 text-center">
                         <div class="mt-md-4">
                             {{ form_start(form) }}
-                            <h2 class="fw-bold mb-2 text-uppercase">Modifier mon profil</h2>
+                            <h2 class="fw-bold mb-2 text-uppercase">Modifier mon compte</h2>
+                            <p class="description-artistType text-white-50 mb-5">Seul la description n'est pas
+                                obligatoire.</p>
                             <div class="form-outline form-white mb-4">
                                 {{ form_row(form.nickname) }}
                             </div>
