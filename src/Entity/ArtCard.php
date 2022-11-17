@@ -35,6 +35,9 @@ class ArtCard
     #[ORM\Column(type: 'datetime')]
     private \DateTimeInterface $create_at;
 
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $pending;
+
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'artCards')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user;
@@ -113,6 +116,18 @@ class ArtCard
     public function setPictureArt(string $pictureArt): self
     {
         $this->pictureArt = $pictureArt;
+
+        return $this;
+    }
+
+    public function getPending(): ?bool
+    {
+        return $this->pending;
+    }
+
+    public function setPending(bool $pending): self
+    {
+        $this->pending = $pending;
 
         return $this;
     }

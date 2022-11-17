@@ -41,6 +41,7 @@ class ArtCardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $artCard->setUser($this->getUser());
+            $artCard->setPending(false);
             $artCardRepository->save($artCard, true);
 
             return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
