@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}detail d'une oeuvre{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card float-right">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="card-block">
+                                <h1 class="card-title">{{ artCard.title }}</h1>
+                                <p>{{ artCard.description }}</p>
+                                <p>{{ artCard.city }}</p>
+                                <div class="d-flex justify-content-around mb-2">
+                                    <a href="#" class="btn btn-success btn-sm">Valider</a>
+                                    <a href="#" class="btn btn-primary btn-sm">Editer</a>
+                                    <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
