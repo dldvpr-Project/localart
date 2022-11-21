@@ -85,4 +85,14 @@ class ArtCardController extends AbstractController
         }
         return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/admin/pending', name: 'pending')]
+    public function pending(ArtCardRepository $artCardRepository): Response
+    {
+        $artCards = $artCardRepository->findBy(['pending' => 0]);
+
+        return $this->render('artCard/pending.html.twig', [
+            'artCards' => $artCards
+        ]);
+    }
 }
