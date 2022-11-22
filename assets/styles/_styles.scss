@@ -78,3 +78,14 @@ form label {
 .form-login {
   border-radius: 1.6rem;
 }
+
+/* ---------- CARD DETAIL  ---------- */
+
+.show-card-title {
+  font-size: 1.3rem;
+}
+
+.show-card-description, .show-card-city, .show-card-user {
+  font-size: 1rem;
+  margin: 1rem;
+}
