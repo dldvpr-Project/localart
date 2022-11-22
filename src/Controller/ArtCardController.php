@@ -86,6 +86,7 @@ class ArtCardController extends AbstractController
         return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin/pending', name: 'pending')]
     public function pending(ArtCardRepository $artCardRepository): Response
     {
@@ -93,6 +94,25 @@ class ArtCardController extends AbstractController
 
         return $this->render('artCard/pending.html.twig', [
             'artCards' => $artCards
+        ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/admin/pending/{id}', name: 'show', methods: ['GET', 'POST'])]
+    public function show(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
+    {
+        $form = $this->createForm(ArtCardType::class, $artCard);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $artCardRepository->save($artCard, true);
+
+            return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('artCard/show.html.twig', [
+            'artCard' => $artCard,
+            'form' => $form,
         ]);
     }
 }

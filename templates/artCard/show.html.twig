@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}detail d'une oeuvre{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="show-card-detail card float-right">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">
+                        </div>
+                        <div class="col-sm-7 d-flex">
+                            <div class="card-block d-flex flex-column justify-content-between align-content-between">
+                                <h1 class="show-card-title card-title text-center">{{ artCard.title }}</h1>
+                                <p class="show-card-description">{{ artCard.description }}</p>
+                                <div class="d-flex justify-content-between">
+                                <p class="show-card-city">{{ artCard.city }}</p>
+                                <p class="show-card-user">{{ artCard.user.nickname }}</p>
+                                </div>
+                                <div class="d-flex justify-content-around mb-2">
+                                    <a href="#" class="btn btn-success">Valider</a>
+                                    <a href="{{ path('artCard_edit', {'id': artCard.id}) }}" class="btn btn-primary">Editer</a>
+                                    <form method="post" action="{{ path('artCard_delete', {'id': artCard.id}) }}"
+                                          onsubmit="return confirm('Confirmez-vous la suppression de cette oeuvre ?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ artCard.id) }}">
+                                        <button class="btn btn-danger text-white">delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
