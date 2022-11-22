@@ -97,7 +97,7 @@ class ArtCardController extends AbstractController
         ]);
     }
 
-    #[Security("is_granted('ROLE_ADMIN')")]
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin/pending/{id}', name: 'show', methods: ['GET', 'POST'])]
     public function show(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
     {
