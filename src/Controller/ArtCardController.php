@@ -115,4 +115,18 @@ class ArtCardController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('validate/{id}', name: 'validate', methods: ['POST'])]
+    public function validate(Request $request, ArtCard $artCard, ArtCardRepository $artCardRepository): Response
+    {
+        if (is_string($request->request->get('_token')) || is_null($request->request->get('_token'))) {
+            if ($this->isCsrfTokenValid('_validate' . $artCard->getId(), $request->request->get('_token'))) {
+                $artCard->setPending(1);
+                $artCardRepository->save($artCard, true);
+            } else {
+                throw new Exception(message: 'token should be string or null');
+            }
+        }
+        return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
+    }
 }
