@@ -4,10 +4,10 @@
 
 {% block body %}
 
-    <div class="container min-vh-75">
+    <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card float-right">
+                <div class="show-card-detail card float-right">
                     <div class="row">
                         <div class="col-sm-5">
                             <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">
@@ -21,9 +21,13 @@
                                 <p class="show-card-user">{{ artCard.user.nickname }}</p>
                                 </div>
                                 <div class="d-flex justify-content-around mb-2">
-                                    <a href="#" class="btn btn-success btn-sm">Valider</a>
-                                    <a href="#" class="btn btn-primary btn-sm">Editer</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                                    <a href="#" class="btn btn-success">Valider</a>
+                                    <a href="{{ path('artCard_edit', {'id': artCard.id}) }}" class="btn btn-primary">Editer</a>
+                                    <form method="post" action="{{ path('artCard_delete', {'id': artCard.id}) }}"
+                                          onsubmit="return confirm('Confirmez-vous la suppression de cette oeuvre ?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ artCard.id) }}">
+                                        <button class="btn btn-danger text-white">delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
