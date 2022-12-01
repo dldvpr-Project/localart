@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ArtCard;
 use App\Repository\ViewRandCardRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,13 +17,22 @@ class HomeController extends AbstractController
     {
         $randCard = $viewRandCardRepository->findAll();
         if (empty($randCard) || !is_array($randCard)) {
+            throw $this->createNotFoundException();
         }
 
-        $cards = $artCardRepository->findBy(['id' => $randCard]);
+        $artCards = $artCardRepository->findBy(['id' => $randCard]);
+        if (empty($artCards) || !is_array($artCards)) {
+            throw $this->createNotFoundException();
+        }
 
+        $artCard = array_pop($artCards);
+        if (!$artCard instanceof ArtCard) {
+            throw $this->createNotFoundException();
+        }
 
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'artCards' => $artCards,
+            'artCard' => $artCard
         ]);
     }
 }
