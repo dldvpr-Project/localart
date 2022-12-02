@@ -19,7 +19,7 @@ class ArtCardFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < 300; $i++) {
             $artCard = new artCard();
             $artCard->setTitle($faker->word());
-            $artCard->setPictureArt('https://via.placeholder.com/400');
+            $artCard->setPictureArt('https://baconmockup.com/400/400/');
             $artCard->setDescription($faker->paragraph(5));
             $artCard->setCity($faker->city());
             $artCard->setCreateAt($faker->dateTimeBetween('-5 week', '-1 week'));

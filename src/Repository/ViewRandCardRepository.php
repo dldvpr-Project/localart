@@ -21,4 +21,22 @@ class ViewRandCardRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ViewRandCard::class);
     }
+
+    public function save(ViewRandCard $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(ViewRandCard $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 }

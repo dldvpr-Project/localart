@@ -35,5 +35,6 @@ final class Version20221130094507 extends AbstractMigration
         $this->addSql('DROP TABLE `ArtCard`');
         $this->addSql('DROP TABLE `user`');
         $this->addSql('DROP TABLE messenger_messages');
+        $this->addSql('DROP VIEW View_Rand_Card');
     }
 }
