@@ -22,13 +22,13 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <h4 class="text-center">Gestion admin</h4>
                             <li class="nav-item text-center pt-2">
-                                <a class="nav-link" href="#">Nouveaux pings</a>
+                                <a class="nav-link" href="{{ path('artCard_pending') }}">Nouveaux pings</a>
                             </li>
                             <li class="nav-item text-center">
-                                <a class="nav-link" href="#">Gestion utilisateurs</a>
+                                <a class="nav-link" href="{{ path('user_index') }}">Gestion utilisateurs</a>
                             </li>
                             <li class="nav-item text-center pb-3 border-bottom">
-                                <a class="nav-link" href="#">Gestion artistes</a>
+                                <a class="nav-link" href="{{ path('artist_showAll') }}">Gestion artistes</a>
                             </li>
                         {% endif %}
                         {% if is_granted('ROLE_USER') or is_granted('ROLE_ARTIST') or is_granted('ROLE_ADMIN') %}
@@ -45,7 +45,7 @@
                         <a class="nav-link" aria-current="page" href="#">Accueil</a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link" href="#">Artistes</a>
+                        <a class="nav-link" href="{{ path('artist_showAll') }}">Artistes</a>
                     </li>
                     <li class="nav-item text-center">
                         <a class="nav-link" href="#">Carte</a>

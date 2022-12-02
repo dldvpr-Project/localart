@@ -27,7 +27,7 @@ body {
   background-color: var(--background);
 }
 
-ul {
+ul, li {
   list-style: none;
   padding-left: 0;
   margin: 0;
@@ -46,6 +46,10 @@ form label {
 .navbar {
   height: 5rem;
   margin-bottom: 1rem;
+}
+
+.nav-link {
+  font-size: 1.3rem;
 }
 
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */
