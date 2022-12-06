@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 
-#[ORM\Table(name: '`View_Rand_Card`')]
+#[ORM\Table(name: 'View_Rand_Card')]
 #[ORM\Entity(repositoryClass: ViewRandCardRepository::class, readOnly: true)]
 class ViewRandCard
 {
