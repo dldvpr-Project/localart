@@ -6,44 +6,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex">
-                <div>
-                    <div class="show-card-detail d-flex align-items-center card float-right m-0 ">
-                        <div class="row">
-                            <div class="col-12">
-                                <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">
-                            </div>
-                            <div class="d-flex">
-                                <div class="card-block d-flex flex-column">
-                                    <h1 class="show-card-title card-title text-center">{{ artCard.title }}</h1>
-                                    <p class="show-card-description">{{ artCard.description }}</p>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="show-card-city">{{ artCard.city }}</p>
-                                        <p class="show-card-user">{{ artCard.user.nickname }}</p>
-                                    </div>
+                <div class="d-flex flex-row">
+                    {% for artCard in artCards %}
+                        <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
+                            <img class="card-img img-fluid img-thumbnail bg-black"
+                                 src="{{ artCard.pictureArt }}" alt="This is the profil picture of an artist"/>
+                            <div class="mt-1 card-body">
+                                <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
+                                <div class="d-flex justify-content-around">
+                                    <a href="{{ path('artCard_show', {'id': artCard.id}) }}"
+                                       class="btn btn-success text-white">Voir Plus</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column align-items-center">
-                    <div>
-                        <img src="https://baconmockup.com/1400/500/">
-                    </div>
-                    <div class="d-flex flex-row">
-                        {% for artCard in artCards %}
-                            <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
-                                <img class="card-img img-fluid img-thumbnail bg-black"
-                                     src="{{ artCard.pictureArt }}" alt="This is the profil picture of an artist"/>
-                                <div class="mt-1 card-body">
-                                    <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
-                                    <div class="d-flex justify-content-around">
-                                        <a href="{{ path('artCard_show', {'id': artCard.id}) }}"
-                                           class="btn btn-success text-white">Voir Plus</a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
