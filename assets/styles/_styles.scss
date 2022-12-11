@@ -3,7 +3,7 @@
   --box-shadow: 0px 6px 9px 0px rgb(0 0 0 / 15%);
   --box-shadow-nav: rgb(0 0 0 / 22%) 0px 2 18px 0px;
   --text-color: white;
---background: #272727f5;
+--background: #272727f1;
 }
 
 /* ---------- FONTS ---------- */
@@ -28,10 +28,11 @@ body {
   text-align: justify;
 }
 
-ul, li {
+ul, li, a {
   list-style: none;
   padding-left: 0;
   margin: 0;
+  cursor: pointer;
 }
 
 .card {
@@ -72,11 +73,16 @@ form label {
 }
 
 .picture-more-art {
+  height: auto;
+  width: 32rem;
+}
+
+.map-homepage {
   aspect-ratio: 1/1;
-  object-fit: contain;
+  object-fit: cover;
   object-position: 50% 50%;
   height: auto;
-  width: 20rem;
+  width: 33rem;
 }
 
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */
