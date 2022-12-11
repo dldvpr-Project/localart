@@ -3,25 +3,36 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 d-flex">
-                <div class="d-flex flex-row">
-                    {% for artCard in artCards %}
-                        <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
-                            <img class="card-img img-fluid img-thumbnail bg-black"
-                                 src="{{ artCard.pictureArt }}" alt="This is the profil picture of an artist"/>
-                            <div class="mt-1 card-body">
-                                <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
-                                <div class="d-flex justify-content-around">
-                                    <a href="{{ path('artCard_show', {'id': artCard.id}) }}"
-                                       class="btn btn-success text-white">Voir Plus</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
+<div class="container-fluid">
+    <div class="row row-cols-2 align-items-center">
+        <div class="col-12 text-center">
+            <h1>" {{ artCard.title }} "</h1>
+        </div>
+        <div class="col-12 text-center mb-5">
+            <h2 class="fst-italic fs-5">
+                par {{ artCard.user.nickname }}
+            </h2>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <div class="art-homepage">
+                <img class="picture-homepage" src="{{ artCard.pictureArt }}">
+                <p class="description-homepage">{{ artCard.description }}</p>
             </div>
         </div>
+        <div class="col">
+            <img class="img-fluid" src="{{ asset('build/images/placeholder/map.png') }}">
+        </div>
+        <div class="col-12 my-5 text-center">
+            <h1>Découvrir d’autres oeuvres</h1>
+        </div>
+        {% for art in artCards %}
+        <div class="col-3 mt-5 d-flex justify-content-center">
+            <div class="art-homepage">
+                <img class="picture-more-art" src="{{ art.pictureArt }}">
+                <a class="btn btn-danger mt-3">Voir plus</a>
+            </div>
+        </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}

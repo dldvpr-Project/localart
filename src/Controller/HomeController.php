@@ -25,8 +25,12 @@ class HomeController extends AbstractController
             throw $this->createNotFoundException();
         }
 
+        $artCard = array_pop($artCards);
+
+
         return $this->render('home/index.html.twig', [
             'artCards' => $artCards,
+            'artCard' => $artCard,
         ]);
     }
 }
