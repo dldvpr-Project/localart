@@ -23,6 +23,7 @@ class ArtCard
 
     #[ORM\Column(length: 255, nullable: false)]
     #[Assert\NotBlank(message: "Le champ ne peut être vide.")]
+    #[Assert\File(mimeTypes: 'image/*')]
     private ?string $pictureArt;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

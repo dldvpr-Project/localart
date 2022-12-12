@@ -3,20 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\ArtCard;
-use App\Entity\User;
-use App\Entity\ViewRandCard;
 use App\Form\ArtCardType;
 use App\Repository\ArtCardRepository;
-use App\Repository\ViewRandCardRepository;
+use App\Service\ArtPictureUploader;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use function PHPUnit\Framework\isInstanceOf;
-use function PHPUnit\Framework\isTrue;
 
 
 #[Route('/artcard', name: 'artCard_')]
@@ -34,13 +31,19 @@ class ArtCardController extends AbstractController
 
     #[Route('/new', name: 'new')]
     #[Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ARTIST')")]
-    public function new(Request $request, ArtCardRepository $artCardRepository): Response
+    public function new(Request $request, ArtCardRepository $artCardRepository, ArtPictureUploader $pictureUploader): Response
     {
         $artCard = new ArtCard();
         $form = $this->createForm(ArtCardType::class, $artCard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form->get('pictureArt')->getData();
+            if ($pictureFile) {
+                $pictureFileName = $pictureUploader->upload($pictureFile);
+                $artCard->setPictureArt($pictureFileName);
+            }
 
             $artCard->setUser($this->getUser());
             $artCard->setPending(false);
@@ -57,12 +60,21 @@ class ArtCardController extends AbstractController
 
     #[Security("is_granted('ROLE_ADMIN')")]
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
+    public function edit(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository, ArtPictureUploader $pictureUploader): Response
     {
         $form = $this->createForm(ArtCardType::class, $artCard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form->get('pictureArt')->getData();
+            if ($pictureFile) {
+                $pathFile = $this->getParameter('artPicture_folder') . $artCard->getPictureArt();
+                unlink($pathFile);
+                $logoFileName = $pictureUploader->upload($pictureFile);
+                $artCard->setPictureArt($logoFileName);
+            }
+
             $artCardRepository->save($artCard, true);
 
             return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
@@ -80,6 +92,8 @@ class ArtCardController extends AbstractController
     {
         if (is_string($request->request->get('_token')) || is_null($request->request->get('_token'))) {
             if ($this->isCsrfTokenValid('_delete' . $artCard->getId(), $request->request->get('_token'))) {
+                $pathFile = $this->getParameter('artPicture_folder') . $artCard->getPictureArt();
+                unlink($pathFile);
                 $artCardRepository->remove($artCard, true);
             } else {
                 throw new Exception(message: 'token should be string or null');
@@ -117,6 +131,7 @@ class ArtCardController extends AbstractController
             'form' => $form,
         ]);
     }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('validate/{id}', name: 'validate', methods: ['POST'])]
     public function validate(Request $request, ArtCard $artCard, ArtCardRepository $artCardRepository): Response

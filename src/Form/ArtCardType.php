@@ -4,11 +4,13 @@ namespace App\Form;
 
 use App\Entity\ArtCard;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\File;
 
 class ArtCardType extends AbstractType
 {
@@ -21,11 +23,20 @@ class ArtCardType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Le champ ne peut être vide.']),
                 ]])
-            ->add('pictureArt', TextType::class, [
+            ->add('pictureArt', FileType::class, [
                 'label' => 'urlPicture',
                 'required' => 'Une image est obligatoire.',
                 'constraints' => [
                     new NotBlank(['message' => 'Le champ ne peut être vide.']),
+                    new File([
+                        'maxSize' => '20000k',
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => "Merci d'upload une image au format PNG, JPEG, JPG.",
+                    ]),
                 ]])
             ->add('description', TextareaType::class, [
                 'label' => "Description de l'oeuvre",
