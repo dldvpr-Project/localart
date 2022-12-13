@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\ArtCard;
 use App\Entity\Artist;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -19,7 +18,12 @@ class ArtCardFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < 300; $i++) {
             $artCard = new artCard();
             $artCard->setTitle($faker->word());
-            $artCard->setPictureArt('https://baconmockup.com/400/400/');
+            $picture = $faker->randomElement([
+                '_fixtures_',
+                '_fixtures_',
+                '_fixtures_',
+            ]);
+            $artCard->setPictureArt($picture);
             $artCard->setDescription($faker->paragraph(5));
             $artCard->setCity($faker->city());
             $artCard->setCreateAt($faker->dateTimeBetween('-5 week', '-1 week'));
