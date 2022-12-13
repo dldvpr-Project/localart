@@ -6,13 +6,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 text-center mb-3">
-            <h1>" {{ artCard.title }} "</h1>
-            <h2 class="fst-italic fs-4">{{ artCard.user.nickname }}</h2>
+            <h1>" {{ frontCard.title }} "</h1>
+            <h2 class="fst-italic fs-4">{{ frontCard.user.nickname }}</h2>
         </div>
         <div class="col-12 col-lg-6 d-flex justify-content-center mb-5">
             <div class="art-homepage">
-                <img class="picture-homepage img-fluid mb-3" src="{{ artCard.pictureArt }}">
-                <p class="description-homepage">{{ artCard.description }}</p>
+                <img class="picture-homepage img-fluid mb-3" src="{{ frontCard.pictureArt }}">
+                <p class="description-homepage">{{ frontCard.description }}</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 text-center mb-5">
@@ -23,7 +23,7 @@
                 Découvrir d’autres oeuvres
             </h1>
             <div class="row mt-5">
-                {% for art in artCards %}
+                {% for art in arrayArt %}
                 <div class="col-12 col-lg-3 my-5 d-flex flex-column align-items-center">
                     <img class="img-fluid picture-more-art" src="{{ art.pictureArt }}">
                     <a class="text-decoration-none text-white fs-1" href="{{ path('artCard_show', {id: art.id}) }}">{{ art.title }}</a>
