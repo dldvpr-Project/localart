@@ -26,10 +26,10 @@ class ArtCardType extends AbstractType
             ->add('pictureArt', FileType::class, [
                 'label' => 'urlPicture',
                 'required' => 'Une image est obligatoire.',
+                'mapped' => false,
                 'constraints' => [
-                    new NotBlank(['message' => 'Le champ ne peut être vide.']),
                     new File([
-                        'maxSize' => '20000k',
+                        'maxSize' => '2M',
                         'mimeTypes' => [
                             'image/jpg',
                             'image/jpeg',

@@ -68,13 +68,11 @@ class ArtCardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('pictureArt')->getData();
-            if ($pictureFile) {
-                $pathFile = $this->getParameter('artPicture_folder') . $artCard->getPictureArt();
-                unlink($pathFile);
-                $logoFileName = $pictureUploader->upload($pictureFile);
-                $artCard->setPictureArt($logoFileName);
-            }
 
+            $oldFile = $this->getParameter('artPicture_folder') . '/' . $artCard->getPictureArt();
+            $pictureFileName = $pictureUploader->edit($pictureFile, $oldFile);
+
+            $artCard->setPictureArt($pictureFileName);
             $artCardRepository->save($artCard, true);
 
             return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
@@ -92,7 +90,7 @@ class ArtCardController extends AbstractController
     {
         if (is_string($request->request->get('_token')) || is_null($request->request->get('_token'))) {
             if ($this->isCsrfTokenValid('_delete' . $artCard->getId(), $request->request->get('_token'))) {
-                $pathFile = $this->getParameter('artPicture_folder') . $artCard->getPictureArt();
+                $pathFile = $this->getParameter('artPicture_folder') . '/' . $artCard->getPictureArt();
                 unlink($pathFile);
                 $artCardRepository->remove($artCard, true);
             } else {

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\ArtCard;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -26,6 +27,13 @@ class ArtPictureUploader
 
 
         return $fileName;
+    }
+
+    public function edit(UploadedFile $file, string $oldFile): string
+    {
+        unlink($oldFile);
+
+       return $this->upload($file);
     }
 
     public function getTargetDirectory(): string
