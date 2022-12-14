@@ -3,25 +3,34 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 d-flex">
-                <div class="d-flex flex-row">
-                    {% for artCard in artCards %}
-                        <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
-                            <img class="card-img img-fluid img-thumbnail bg-black"
-                                 src="{{ artCard.pictureArt }}" alt="This is the profil picture of an artist"/>
-                            <div class="mt-1 card-body">
-                                <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
-                                <div class="d-flex justify-content-around">
-                                    <a href="{{ path('artCard_show', {'id': artCard.id}) }}"
-                                       class="btn btn-success text-white">Voir Plus</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <h1>" {{ frontCard.title }} "</h1>
+            <h2 class="fst-italic fs-4">{{ frontCard.user.nickname }}</h2>
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-center mb-5">
+            <div class="art-homepage">
+                <img class="picture-homepage img-fluid mb-3" src="{{ frontCard.pictureArt }}">
+                <p class="description-homepage">{{ frontCard.description }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 text-center mb-5">
+            <img class="picture-homepage" src="{{ asset('build/images/placeholder/map.png') }}">
+        </div>
+        <div class="col-12 mt-lg-5">
+            <h1 class="text-center">
+                Découvrir d’autres oeuvres
+            </h1>
+            <div class="row mt-5">
+                {% for art in arrayArt %}
+                <div class="col-12 col-lg-3 my-5 d-flex flex-column align-items-center">
+                    <img class="img-fluid picture-more-art" src="{{ art.pictureArt }}">
+                    <a class="text-decoration-none text-white fs-1" href="{{ path('artCard_show', {id: art.id}) }}">{{ art.title }}</a>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
