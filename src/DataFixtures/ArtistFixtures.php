@@ -30,7 +30,7 @@ class ArtistFixtures extends Fixture
         $artist->setPassword($password);
         $artist->setRoles(['ROLE_ARTIST']);
         $artist->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
-        $artist->setUrlProfilPicture("https://baconmockup.com/400/600/");
+        $artist->setUrlProfilPicture("_fixture_user_1.jpg");
         $this->addReference('artist_0', $artist);
         $manager->persist($artist);
 
@@ -43,7 +43,12 @@ class ArtistFixtures extends Fixture
             $artist->setPassword($password);
             $artist->setRoles(['ROLE_ARTIST']);
             $artist->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
-            $artist->setUrlProfilPicture("https://baconmockup.com/400/600/");
+            $picture = $faker->randomElement([
+                '_fixture_user_1.jpg',
+                '_fixture_user_2.jpg',
+                '_fixture_user_3.jpg'
+            ]);
+            $artist->setUrlProfilPicture($picture);
             $this->addReference('artist_' . $i, $artist);
             $manager->persist($artist);
 
