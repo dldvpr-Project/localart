@@ -9,7 +9,7 @@
             {% for artCard in artCards %}
                 <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
                     <img class="card-img img-fluid img-thumbnail bg-black"
-                         src="{{ artPicture_folder ~ artCard.pictureArt }}" alt="This is a picture of an art"/>
+                         src="{{ artCard.pictureArt }}" alt="This is a picture of an art"/>
                     <div class="mt-1 card-body">
                         <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
                         <div class="d-flex justify-content-around">

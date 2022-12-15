@@ -8,12 +8,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ArtPictureUploader
 {
-    private $targetDirectory;
+    private string $targetDirectory;
     private SluggerInterface $slugger;
 
-    public function __construct($targetDirectory, SluggerInterface $slugger)
+    public function __construct( SluggerInterface $slugger)
     {
-        $this->targetDirectory = $targetDirectory;
+        $this->targetDirectory = $_ENV['ARTPICTURE_FOLDER'];
         $this->slugger = $slugger;
     }
 

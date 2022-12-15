@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 
 #[ORM\Table(name: 'ArtCard')]
@@ -109,7 +110,7 @@ class ArtCard
 
     public function getPictureArt(): ?string
     {
-        return $this->pictureArt;
+        return $_ENV['ARTPICTURE_FOLDER'] . $this->pictureArt;
     }
 
     public function setPictureArt(string $pictureArt): self

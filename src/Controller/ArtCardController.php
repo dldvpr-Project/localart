@@ -69,7 +69,7 @@ class ArtCardController extends AbstractController
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('pictureArt')->getData();
 
-            $oldFile = $this->getParameter('artPicture_folder') . '/' . $artCard->getPictureArt();
+            $oldFile = $artCard->getPictureArt();
             $pictureFileName = $pictureUploader->edit($pictureFile, $oldFile);
 
             $artCard->setPictureArt($pictureFileName);
