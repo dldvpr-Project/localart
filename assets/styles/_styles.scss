@@ -2,8 +2,8 @@
 :root {
   --box-shadow: 0px 6px 9px 0px rgb(0 0 0 / 15%);
   --box-shadow-nav: rgb(0 0 0 / 22%) 0px 2 18px 0px;
-  --text-color: #444;
-  --background: #efefef;
+  --text-color: white;
+--background: #272727f1;
 }
 
 /* ---------- FONTS ---------- */
@@ -25,12 +25,14 @@ body {
   font-size: 10px;
   color: var(--text-color);
   background-color: var(--background);
+  text-align: justify;
 }
 
-ul, li {
+ul, li, a {
   list-style: none;
   padding-left: 0;
   margin: 0;
+  cursor: pointer;
 }
 
 .card {
@@ -50,6 +52,33 @@ form label {
 
 .nav-link {
   font-size: 1.3rem;
+}
+
+/* ---------- HOME PAGE ---------- */
+
+.art-homepage {
+  width: 35rem;
+}
+
+.picture-homepage {
+width: 35rem;
+}
+
+.description-homepage {
+  font-size: 1rem;
+}
+
+.picture-more-art {
+  height: auto;
+  width: 32rem;
+}
+
+.map-homepage {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: 50% 50%;
+  height: auto;
+  width: 33rem;
 }
 
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */

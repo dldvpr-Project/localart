@@ -15,18 +15,22 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(ViewRandCardRepository $viewRandCardRepository, ArtCardRepository $artCardRepository): Response
     {
-        $randCard = $viewRandCardRepository->findAll();
-        if (empty($randCard) || !is_array($randCard)) {
+        $randArt = $viewRandCardRepository->findAll();
+        if (empty($randArt) || !is_array($randArt)) {
             throw $this->createNotFoundException();
         }
 
-        $artCards = $artCardRepository->findBy(['id' => $randCard]);
-        if (empty($artCards) || !is_array($artCards)) {
+        $arrayArt = $artCardRepository->findBy(['id' => $randArt]);
+        if (empty($arrayArt) || !is_array($arrayArt)) {
             throw $this->createNotFoundException();
         }
+
+        $frontArt = array_pop($arrayArt);
+
 
         return $this->render('home/index.html.twig', [
-            'artCards' => $artCards,
+            'arrayArt' => $arrayArt,
+            'frontArt' => $frontArt,
         ]);
     }
 }
