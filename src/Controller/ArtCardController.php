@@ -2,21 +2,16 @@
 
 namespace App\Controller;
 
+use Exception;
 use App\Entity\ArtCard;
-use App\Entity\User;
-use App\Entity\ViewRandCard;
 use App\Form\ArtCardType;
 use App\Repository\ArtCardRepository;
-use App\Repository\ViewRandCardRepository;
-use Exception;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use function PHPUnit\Framework\isInstanceOf;
-use function PHPUnit\Framework\isTrue;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 #[Route('/artcard', name: 'artCard_')]

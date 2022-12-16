@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\ArtCard;
+use Faker\Factory;
 use App\Entity\Artist;
+use App\Entity\ArtCard;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
 
 class ArtCardFixtures extends Fixture implements DependentFixtureInterface
 {
