@@ -2,30 +2,22 @@
 
 {% block title %}detail d'une oeuvre{% endblock %}
 
-{% block body %}
 
+{% block body %}
     <div class="container-fluid">
-        <div class="row flex-column">
-            <div class="col-12 m-auto text-center">
+        <div class="row">
+            <div class="col-12 text-center mb-3">
                 <h1>" {{ artCard.title }} "</h1>
+                <h2 class="fst-italic fs-4">{{ artCard.user.nickname }}</h2>
             </div>
-            <div class="row">
-                <div class="col-12 m-auto text-center">
-                    <h1 class="fst-italic fs-4">par {{ artCard.user.nickname }}</h1>
-                </div>
-            </div>
-            <div class="row m-auto">
-                <div class="col-12 m-auto">
-                    <img src="{{ artCard.pictureArt }}">
+            <div class="col-12 col-lg-6 d-flex justify-content-center mb-5">
+                <div class="art-homepage">
+                    <img class="picture-homepage img-fluid mb-3" src="{{ artCard.pictureArt }}">
+                    <p class="description-homepage">{{ artCard.description }}</p>
                 </div>
             </div>
-            <div class="row row-cols-2 justify-content-center m-auto">
-                <div class="col-12 col-lg-6">
-                    {{ artCard.description }}
-                </div>
-                <div class="col-12 col-lg-6 bg-gradient">
-                    carte
-                </div>
+            <div class="col-12 col-lg-6 text-center mb-5">
+                <img class="picture-homepage" src="{{ asset('build/images/placeholder/map.png') }}">
             </div>
         </div>
     </div>
