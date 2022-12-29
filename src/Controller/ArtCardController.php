@@ -124,7 +124,7 @@ class ArtCardController extends AbstractController
             return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('artCard/show.html.twig', [
+        return $this->renderForm('artCard/showPending.html.twig', [
             'artCard' => $artCard,
             'form' => $form,
         ]);
