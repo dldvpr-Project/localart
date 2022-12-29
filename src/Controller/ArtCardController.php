@@ -144,4 +144,6 @@ class ArtCardController extends AbstractController
         }
         return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    public function show()
 }
