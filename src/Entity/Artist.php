@@ -39,7 +39,7 @@ class Artist extends User
 
     public function getUrlProfilPicture(): ?string
     {
-        return $this->urlProfilPicture;
+        return $_ENV['PROFILPICTURE_FOLDER'] . $this->urlProfilPicture;
     }
 
     public function setUrlProfilPicture(?string $urlProfilPicture): self
