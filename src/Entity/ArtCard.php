@@ -108,9 +108,14 @@ class ArtCard
         return $this;
     }
 
+    public function getFileNameArt(): ?string
+    {
+        return $this->pictureArt;
+    }
+
     public function getPictureArt(): ?string
     {
-        return $_ENV['ARTPICTURE_FOLDER'] . $this->pictureArt;
+        return '/' . $_ENV['ARTPICTURE_FOLDER'] . $this->pictureArt;
     }
 
     public function setPictureArt(string $pictureArt): self
