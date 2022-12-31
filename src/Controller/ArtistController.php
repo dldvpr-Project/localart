@@ -6,6 +6,8 @@ use App\Entity\User;
 use App\Entity\Artist;
 use App\Form\ArtistModifyType;
 use App\Repository\ArtistRepository;
+use App\Service\ProfilPictureUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +47,7 @@ class ArtistController extends AbstractController
     }
 
     #[Route('/modify-profil', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, ArtistRepository $artistRepository): Response
+    public function edit(Request $request, ArtistRepository $artistRepository, Artist $artistEntity, ProfilPictureUploader $profilPictureUploader): Response
     {
         if ($this->getUser() === null) {
             return $this->redirectToRoute('artist_showAll');
@@ -58,6 +60,13 @@ class ArtistController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form->get('profilPicture')->getData();
+
+            $oldFile = $artistEntity->getProfilPicture();
+            $pictureFileName = $profilPictureUploader->edit($pictureFile, $oldFile);
+
+            $artistEntity->setProfilPicture($pictureFileName);
 
             $artistRepository->save($artist, true);
             return $this->redirectToRoute('artist_profil');

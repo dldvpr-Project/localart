@@ -6,7 +6,9 @@ use App\Entity\User;
 use App\Entity\Artist;
 use App\Form\UserType;
 use App\Form\AdminArtistType;
+use App\Service\ProfilPictureUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,13 +50,20 @@ class RegistrationController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/artist', name: 'artist')]
-    public function add(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, ProfilPictureUploader $profilPictureUploader): Response
     {
         $artist = new Artist();
         $form = $this->createForm(AdminArtistType::class, $artist);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form->get('ProfilPicture')->getData();
+            if ($pictureFile) {
+                $pictureFileName = $profilPictureUploader->upload($pictureFile);
+                $artist->setUrlProfilPicture($pictureFileName);
+            }
+
             $artist->setPassword(
                 $userPasswordHasher->hashPassword(
                     $artist,
