@@ -1,0 +1,20 @@
+<button onclick="document.getElementsByClassName('modalDelete').style.display='block'">Supprimer</button>
+
+<div class="modal modalDelete">
+    <span onclick="document.getElementsByClassName('modalDelete').style.display='none'" class="close"
+          title="Close Modal">×</span>
+    <form class="modal-content" action="/action_page.php">
+        <div class="container">
+            <p class="fs-2">Voulez-vous supprimer cette œuvre ??</p>
+
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementsByClassName('modalDelete').style.display='none'"
+                        class="cancelbtn btn">Retour
+                </button>
+                <button type="button" onclick="document.getElementsByClassName('modalDelete').style.display='none'"
+                        class="deletebtn btn">Supprimer
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
