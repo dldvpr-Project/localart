@@ -111,6 +111,15 @@ class ArtCardController extends AbstractController
         ]);
     }
 
+    #[Route('/show/{id}', name: 'show')]
+    public function show( ArtCard $artCard ): Response
+    {
+
+        return $this->render('artCard/show.html.twig', [
+            'artCard' => $artCard,
+        ]);
+    }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin/pending/{id}', name: 'pending_show', methods: ['GET', 'POST'])]
     public function pendingShow(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
