@@ -40,10 +40,8 @@ class ArtCardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('pictureArt')->getData();
-            if ($pictureFile) {
                 $pictureFileName = $pictureUploader->upload($pictureFile);
                 $artCard->setPictureArt($pictureFileName);
-            }
 
             $artCard->setUser($this->getUser());
             $artCard->setPending(false);
@@ -69,10 +67,12 @@ class ArtCardController extends AbstractController
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('pictureArt')->getData();
 
-            $oldFile = $artCard->getPictureArt();
-            $pictureFileName = $pictureUploader->edit($pictureFile, $oldFile);
+            if ($pictureFile !== null) {
+                $oldFile = $artCard->getPictureArt();
+                $pictureFileName = $pictureUploader->edit($pictureFile, $oldFile);
+                $artCard->setPictureArt($pictureFileName);
+            }
 
-            $artCard->setPictureArt($pictureFileName);
             $artCardRepository->save($artCard, true);
 
             return $this->redirectToRoute('home_index', [], Response::HTTP_SEE_OTHER);
