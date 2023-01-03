@@ -19,9 +19,9 @@ class ArtCardFixtures extends Fixture implements DependentFixtureInterface
             $artCard = new artCard();
             $artCard->setTitle($faker->word());
             $picture = $faker->randomElement([
-                '_fixtures_art_1',
-                '_fixtures_art_2',
-                '_fixtures_art_3',
+                '_fixtures_art_1.jpg',
+                '_fixtures_art_2.jpg',
+                '_fixtures_art_3.jpg',
             ]);
             $artCard->setPictureArt($picture);
             $artCard->setDescription($faker->paragraph(5));
