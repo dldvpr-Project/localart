@@ -110,7 +110,7 @@ class ArtCard
 
     public function getPictureArt(): ?string
     {
-        return $_ENV['ARTPICTURE_FOLDER'] . $this->pictureArt;
+        return '/' . $_ENV['ARTPICTURE_FOLDER'] . $this->pictureArt;
     }
 
     public function setPictureArt(string $pictureArt): self

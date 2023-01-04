@@ -3,7 +3,6 @@
 {% block title %}En attente de validation{% endblock %}
 
 {% block body %}
-
     <div class="container-fluid container-lg mt-3">
         <div class="row justify-content-center">
             {% for artCard in artCards %}
@@ -13,7 +12,7 @@
                     <div class="mt-1 card-body">
                         <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
                         <div class="d-flex justify-content-around">
-                                <a href="{{ path('artCard_show', {'id': artCard.id}) }}"
+                                <a href="{{ path('artCard_pending_show', {'id': artCard.id}) }}"
                                    class="btn btn-success text-white">Voir Plus</a>
                         </div>
                     </div>

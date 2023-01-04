@@ -30,8 +30,8 @@ class ArtCardController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    #[Security("IS_AUTHENTICATED_FULLY")]
-    public function new(Request $request, ArtCardRepository $artCardRepository): Response
+    #[Security("is_granted('ROLE_USER')")]
+    public function new(Request $request, ArtCardRepository $artCardRepository, ArtPictureUploader $pictureUploader): Response
     {
         $artCard = new ArtCard();
         $form = $this->createForm(ArtCardType::class, $artCard);
@@ -40,16 +40,14 @@ class ArtCardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('pictureArt')->getData();
-            if ($pictureFile) {
                 $pictureFileName = $pictureUploader->upload($pictureFile);
                 $artCard->setPictureArt($pictureFileName);
-            }
 
             $artCard->setUser($this->getUser());
             $artCard->setPending(false);
             $artCardRepository->save($artCard, true);
 
-            return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artCard/new.html.twig', [
@@ -69,13 +67,15 @@ class ArtCardController extends AbstractController
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('pictureArt')->getData();
 
-            $oldFile = $artCard->getPictureArt();
-            $pictureFileName = $pictureUploader->edit($pictureFile, $oldFile);
+            if ($pictureFile !== null) {
+                $oldFile = $artCard->getPictureArt();
+                $pictureFileName = $pictureUploader->edit($pictureFile, $oldFile);
+                $artCard->setPictureArt($pictureFileName);
+            }
 
-            $artCard->setPictureArt($pictureFileName);
             $artCardRepository->save($artCard, true);
 
-            return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artCard/edit.html.twig', [

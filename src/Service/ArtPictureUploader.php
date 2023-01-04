@@ -31,7 +31,8 @@ class ArtPictureUploader
 
     public function edit(UploadedFile $file, string $oldFile): string
     {
-        unlink($oldFile);
+
+        unlink(getcwd() . $oldFile);
 
        return $this->upload($file);
     }
