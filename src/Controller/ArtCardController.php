@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ArtCard;
 use App\Form\AdminModifyArtCardType;
+use App\Form\ArtCardType;
 use App\Repository\ArtCardRepository;
 use App\Service\ArtPictureUploader;
 use Exception;
@@ -34,7 +35,7 @@ class ArtCardController extends AbstractController
     public function new(Request $request, ArtCardRepository $artCardRepository, ArtPictureUploader $pictureUploader): Response
     {
         $artCard = new ArtCard();
-        $form = $this->createForm(AdminModifyArtCardType::class, $artCard);
+        $form = $this->createForm(ArtCardType::class, $artCard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
