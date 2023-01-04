@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\File;
 
-class ArtCardType extends AbstractType
+class AdminModifyArtCardType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

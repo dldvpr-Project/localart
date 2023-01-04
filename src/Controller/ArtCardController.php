@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ArtCard;
-use App\Form\ArtCardType;
+use App\Form\AdminModifyArtCardType;
 use App\Repository\ArtCardRepository;
 use App\Service\ArtPictureUploader;
 use Exception;
@@ -34,7 +34,7 @@ class ArtCardController extends AbstractController
     public function new(Request $request, ArtCardRepository $artCardRepository, ArtPictureUploader $pictureUploader): Response
     {
         $artCard = new ArtCard();
-        $form = $this->createForm(ArtCardType::class, $artCard);
+        $form = $this->createForm(AdminModifyArtCardType::class, $artCard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,7 +60,7 @@ class ArtCardController extends AbstractController
     #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository, ArtPictureUploader $pictureUploader): Response
     {
-        $form = $this->createForm(ArtCardType::class, $artCard);
+        $form = $this->createForm(AdminModifyArtCardType::class, $artCard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -124,7 +124,7 @@ class ArtCardController extends AbstractController
     #[Route('/admin/pending/{id}', name: 'pending_show', methods: ['GET', 'POST'])]
     public function pendingShow(ArtCard $artCard, Request $request, ArtCardRepository $artCardRepository): Response
     {
-        $form = $this->createForm(ArtCardType::class, $artCard);
+        $form = $this->createForm(AdminModifyArtCardType::class, $artCard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
