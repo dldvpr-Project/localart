@@ -24,7 +24,7 @@ class ArtCardType extends AbstractType
                     new NotBlank(['message' => 'Le champ ne peut être vide.']),
                 ]])
             ->add('pictureArt', FileType::class, [
-                'label' => 'urlPicture',
+                'label' => 'Photo',
                 'required' => 'Une image est obligatoire.',
                 'mapped' => false,
                 'constraints' => [
@@ -43,7 +43,7 @@ class ArtCardType extends AbstractType
                 'attr' => ['class' => 'area-artisteType']
             ])
         ->add('city', TextType::class, [
-            'label' => 'city',
+            'label' => 'Ville',
             'required' => 'Une ville est obligatoire.',
             'constraints' => [
                 new NotBlank(['message' => 'Le champ ne peut être vide.']),
