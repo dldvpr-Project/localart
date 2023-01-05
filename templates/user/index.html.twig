@@ -6,6 +6,7 @@
 
     <div class="container-fluid container-lg mt-3">
         <div class="row justify-content-center">
+            {{ include('components/_genericFlashMessage.html.twig') }}
             {% for user in users %}
                 <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
                     <img class="card-img img-fluid img-thumbnail bg-black"
@@ -13,13 +14,13 @@
                     <div class="mt-1 card-body">
                         <h1 class="card-title m-0 text-center">{{ user.nickName }}</h1>
                         <div class="d-flex justify-content-around">
-                                <a href="{{ path('admin_edit_user', {'id': user.id}) }}"
-                                   class="btn btn-success text-white">Edit</a>
-                                <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
-                                      onsubmit="return confirm('Confirmez-vous la suppression de cet utilisateur ?');">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ user.id) }}">
-                                    <button class="btn btn-danger text-white">delete</button>
-                                </form>
+                            <a href="{{ path('admin_edit_user', {'id': user.id}) }}"
+                               class="btn btn-success text-white">Edit</a>
+                            <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
+                                  onsubmit="return confirm('Confirmez-vous la suppression de cet utilisateur ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ user.id) }}">
+                                <button class="btn btn-danger text-white">delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
