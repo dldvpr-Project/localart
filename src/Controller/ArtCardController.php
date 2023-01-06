@@ -76,7 +76,9 @@ class ArtCardController extends AbstractController
 
             $artCardRepository->save($artCard, true);
 
-            return $this->redirectToRoute('home_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Modification effectuée avec succès.');
+
+            return $this->redirectToRoute('artCard_pending_show', ['id' => $artCard->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artCard/edit.html.twig', [
@@ -98,7 +100,10 @@ class ArtCardController extends AbstractController
                 throw new Exception(message: 'token should be string or null');
             }
         }
-        return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
+
+        $this->addFlash('success', 'Suppression effectuée avec succès.');
+
+        return $this->redirectToRoute('artCard_pending', [], Response::HTTP_SEE_OTHER);
     }
 
     #[IsGranted('ROLE_ADMIN')]
@@ -131,7 +136,9 @@ class ArtCardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $artCardRepository->save($artCard, true);
 
-            return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Oeuvre Modifiée avec succès.');
+
+            return $this->redirectToRoute('artCard_pending_show', ['id' => $artCard->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artCard/showPending.html.twig', [
@@ -152,6 +159,9 @@ class ArtCardController extends AbstractController
                 throw new Exception(message: 'token should be string or null');
             }
         }
+
+        $this->addFlash('success', 'Oeuvre validée avec succès.');
+
         return $this->redirectToRoute('artCard_index', [], Response::HTTP_SEE_OTHER);
     }
 }

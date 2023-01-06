@@ -27,6 +27,9 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $userRepository->save($user, true);
+
+            $this->addFlash('success', 'Modification effectuée avec succès.');
+
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -45,7 +48,10 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $userRepository->save($artist, true);
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+
+            $this->addFlash('success', 'Modification effectuée avec succès.');
+
+            return $this->redirectToRoute('artist_showAll', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/artistModifyType.html.twig', [

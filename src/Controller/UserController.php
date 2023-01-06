@@ -82,6 +82,9 @@ class UserController extends AbstractController
                 throw new Exception(message: 'token should be string or null');
             }
         }
+
+        $this->addFlash('success', 'Suppression effectuée avec succès.');
+
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
             $artist->setRoles(["ROLE_ARTIST"]);
             $entityManager->persist($artist);
             $entityManager->flush();
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('artist_index', [], Response::HTTP_SEE_OTHER);
 
         }
         return $this->renderForm('admin/adminArtistType.html.twig', [
