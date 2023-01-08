@@ -27,10 +27,18 @@ class HomeController extends AbstractController
 
         $frontArt = array_pop($arrayArt);
 
+        $frontArtLatitude = $frontArt->getLatitude();
+        $frontArtLongitude = $frontArt->getLongitude();
+
+        $frontArtLatitude = str_replace('.', ',', $frontArtLatitude);
+        $frontArtLongitude = str_replace('.', ',', $frontArtLongitude);
+
 
         return $this->render('home/index.html.twig', [
             'arrayArt' => $arrayArt,
             'frontArt' => $frontArt,
+            'latitude' => $frontArtLatitude,
+            'longitude' => $frontArtLongitude,
         ]);
     }
 }

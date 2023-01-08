@@ -1,7 +1,6 @@
 // On initialise la latitude et la longitude de Paris (centre de la carte)
 import * as L from 'leaflet';
 
-
 let lat = 48.852969;
 let lon = 2.349903;
 let macarte = null;
