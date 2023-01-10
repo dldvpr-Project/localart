@@ -10,20 +10,16 @@ function oneArt(apiUrl) {
         .then(response => response.json())
         .then(data => {
             //Recuperation de latitude et longitude dans le controller
-            let latitude = data.latitude;
-            let longitude = data.longitude;
-
+            const {latitude, longitude} = data;
             let myMap = centeredView(latitude, longitude)
-
             // Initialisation de la carte avec la centrée sur un point donnée avec en utilisant latitude et longitude
             L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
                 attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                minZoom: 1,
+                minZoom: 5,
                 maxZoom: 20
-            }).addTo(myMap);
-
+            }).addTo(myMap)
+                .addLayer(L.marker([latitude, longitude]));
             // On affiche un marker sur la carte
-            L.marker([latitude, longitude]).addTo(myMap);
         })
 }
 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
