@@ -37,8 +37,8 @@ security:
     # - { path: ^/profile, roles: ROLE_USER }
     role_hierarchy:
         ROLE_USER: ROLE_USER
-        ROLE_ARTIST: ROLE_ARTIST
-        ROLE_ADMIN: [ ROLE_USER, ROLE_ARTIST ]
+        ROLE_ARTIST: [ ROLE_ARTIST, ROLE_USER ]
+        ROLE_ADMIN: [ ROLE_USER, ROLE_ARTIST, ROLE_ADMIN ]
 
 when@test:
     security:
