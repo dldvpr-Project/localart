@@ -1,24 +1,32 @@
-// On initialise la latitude et la longitude de Paris (centre de la carte)
 import * as L from 'leaflet';
 
+function centeredView(myLatitude, myLongitude) {
+    return L.map('map').setView([myLatitude, myLongitude], 15);
+}
 
-// Call à la route /home-api
-fetch('/home-api')
-    .then(response => response.json())
-    .then(data => {
-        //Recuperation de latitude et longitude
-        let latitude = data.latitude;
-        let longitude = data.longitude;
+function oneArt(apiUrl) {
+    //call a la route
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            //Recuperation de latitude et longitude dans le controller
+            let latitude = data.latitude;
+            let longitude = data.longitude;
 
-        // Initialisation de la carte
-        let myMap = L.map('map').setView([latitude, longitude], 15);
-        // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
-        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-            // Il est toujours bien de laisser le lien vers la source des données
-            attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-            minZoom: 1,
-            maxZoom: 20
-        }).addTo(myMap);
-        // On affiche un marker sur la carte
-        let marker = L.marker([latitude, longitude]).addTo(myMap)
-    });
+            let myMap = centeredView(latitude, longitude)
+
+            // Initialisation de la carte avec la centrée sur un point donnée avec en utilisant latitude et longitude
+            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(myMap);
+
+            // On affiche un marker sur la carte
+            L.marker([latitude, longitude]).addTo(myMap);
+        })
+}
+// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+window.onload = function () {
+    oneArt('/oneArt/' + id);
+}
