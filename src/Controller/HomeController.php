@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArtCardRepository;
+use App\Service\FindArtsByRand;
+
 
 #[Route('/', name: 'home_')]
 class HomeController extends AbstractController
@@ -15,6 +17,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(ViewRandCardRepository $viewRandCardRepository, ArtCardRepository $artCardRepository): Response
     {
+
         $randArt = $viewRandCardRepository->findAll();
         if (empty($randArt) || !is_array($randArt)) {
             throw $this->createNotFoundException();
@@ -27,14 +30,9 @@ class HomeController extends AbstractController
 
         $frontArt = array_pop($arrayArt);
 
-        $frontArtLatitude = $frontArt->getLatitude();
-        $frontArtLongitude = $frontArt->getLongitude();
-
         return $this->render('home/index.html.twig', [
             'arrayArt' => $arrayArt,
             'frontArt' => $frontArt,
-            'latitude' => $frontArtLatitude,
-            'longitude' => $frontArtLongitude,
         ]);
     }
 }
