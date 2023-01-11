@@ -4,9 +4,9 @@ function centeredView(myLatitude, myLongitude) {
     return L.map('map').setView([myLatitude, myLongitude], 15);
 }
 
-function oneArt(apiUrl) {
+function oneArt(id) {
     //call a la route
-    fetch(apiUrl)
+    fetch('/oneArt/' + id)
         .then(response => response.json())
         .then(data => {
             //Recuperation de latitude et longitude dans le controller
@@ -18,11 +18,11 @@ function oneArt(apiUrl) {
                 minZoom: 5,
                 maxZoom: 20
             }).addTo(myMap)
-                .addLayer(L.marker([latitude, longitude]));
+            L.marker([latitude, longitude]).addTo(myMap);
             // On affiche un marker sur la carte
         })
 }
 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
 window.onload = function () {
-    oneArt('/oneArt/' + id);
+    oneArt(id);
 }

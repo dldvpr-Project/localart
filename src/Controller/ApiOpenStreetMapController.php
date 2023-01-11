@@ -3,14 +3,10 @@
 namespace App\Controller;
 
 use App\Repository\ArtCardRepository;
-use App\Repository\ViewRandCardRepository;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use function PHPUnit\Framework\isInstanceOf;
-use function PHPUnit\Framework\isJson;
+
 
 class ApiOpenStreetMapController extends AbstractController
 {
