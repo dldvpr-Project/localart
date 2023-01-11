@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiOpenStreetMapController extends AbstractController
 {
 
-    #[Route("/oneArt/{id}", name: 'api_home')]
+    #[Route("/getArtCoordinate/{id}", name: 'get_coordinate')]
     public function mapOnIndex(ArtCardRepository $artCardRepository, int $id): JsonResponse
     {
             $frontCard = $artCardRepository->findOneBy(['id' => $id]);

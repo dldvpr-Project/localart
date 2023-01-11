@@ -6,7 +6,7 @@ function centeredView(myLatitude, myLongitude) {
 
 function oneArt(id) {
     //call a la route
-    fetch('/oneArt/' + id)
+    fetch('/getArtCoordinate/' + id)
         .then(response => response.json())
         .then(data => {
             //Recuperation de latitude et longitude dans le controller
