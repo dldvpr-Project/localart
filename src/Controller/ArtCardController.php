@@ -123,7 +123,6 @@ class ArtCardController extends AbstractController
 
         return $this->render('artCard/show.html.twig', [
             'artCard' => $artCard,
-            'id' => $artCard->getId()
         ]);
     }
 
