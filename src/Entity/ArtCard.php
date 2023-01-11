@@ -42,6 +42,14 @@ class ArtCard
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user;
 
+    #[ORM\Column(type: 'float', precision: 8, scale: 6)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?float $latitude;
+
+    #[ORM\Column(type: 'float', precision: 8, scale: 6)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?float $longitude;
+
     public function __construct()
     {
         $this->create_at = new DateTime();
@@ -128,6 +136,30 @@ class ArtCard
     public function setPending(bool $pending): self
     {
         $this->pending = $pending;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(float $longitude): self
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }

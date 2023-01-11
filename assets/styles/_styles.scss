@@ -3,7 +3,7 @@
   --box-shadow: 0px 6px 9px 0px rgb(0 0 0 / 15%);
   --box-shadow-nav: rgb(0 0 0 / 22%) 0px 2 18px 0px;
   --text-color: white;
---background: #272727f1;
+  --background: #272727f1;
 }
 
 /* ---------- FONTS ---------- */
@@ -61,7 +61,11 @@ form label {
 }
 
 .picture-homepage {
-width: 35rem;
+  width: 35rem;
+  height: 35rem;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .description-homepage {
@@ -69,17 +73,13 @@ width: 35rem;
 }
 
 .picture-more-art {
-  height: auto;
-  width: 32rem;
-}
-
-.map-homepage {
-  aspect-ratio: 1/1;
+  width: 25rem;
+  height: 25rem;
+  max-width: 100%;
   object-fit: cover;
   object-position: 50% 50%;
-  height: auto;
-  width: 33rem;
 }
+
 
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */
 
@@ -132,4 +132,11 @@ width: 35rem;
 .show-card-description, .show-card-city, .show-card-user {
   font-size: 1rem;
   margin: 1rem;
+}
+
+/* ---------- CARD DETAIL  ---------- */
+
+#map {
+  height: 35rem;
+  width: 35rem;
 }

@@ -28,6 +28,8 @@ class ArtCardFixtures extends Fixture implements DependentFixtureInterface
             $artCard->setCity($faker->city());
             $artCard->setCreateAt($faker->dateTimeBetween('-5 week', '-1 week'));
             $artCard->setPending($faker->boolean(chanceOfGettingTrue: 50));
+            $artCard->setLatitude(random_int(4568735, 4578881) / 100000);
+            $artCard->setLongitude(random_int(4751591, 4931231) / 1000000);
             $reference = $faker->numberBetween(0, 19);
             $artist = $this->getReference('artist_' . $reference);
             if ($artist instanceof Artist) {
