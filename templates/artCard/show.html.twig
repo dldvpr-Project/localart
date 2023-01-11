@@ -3,9 +3,7 @@
 {% block title %} {{ artCard.title }} {% endblock %}
 
 {% block body %}
-    <script>
-        let id = {{ artCard.id }}
-    </script>
+    <input type="hidden" value="{{ artCard.id }}" id="getShowArtId">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mb-3">

@@ -22,7 +22,14 @@ function oneArt(id) {
             // On affiche un marker sur la carte
         })
 }
-// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-window.onload = function () {
-    oneArt(id);
+
+let getHomeArtId;
+let getShowArtId;
+
+if ( document.getElementById("getHomeArtId") !== null ){
+    getHomeArtId = document.getElementById("getHomeArtId").value;
+    oneArt(getHomeArtId)
+} else {
+    getShowArtId = document.getElementById("getShowArtId").value;
+    oneArt(getShowArtId)
 }
