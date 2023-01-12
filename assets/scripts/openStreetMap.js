@@ -1,8 +1,16 @@
 import * as L from 'leaflet';
+import m from "../images/icons/camera-outline.svg"
 
 function centeredView(myLatitude, myLongitude) {
     return L.map('map').setView([myLatitude, myLongitude], 15);
 }
+
+const defaultIcon = L.icon({
+    iconUrl: m,
+    iconSize: [40, 50],
+    iconAnchor: [2, 2],
+    popupAnchor: [0, -2]
+});
 
 function oneArt(id) {
     //call a la route
@@ -18,18 +26,18 @@ function oneArt(id) {
                 minZoom: 5,
                 maxZoom: 20
             }).addTo(myMap)
-            L.marker([latitude, longitude]).addTo(myMap);
+            //L.marker([latitude, longitude]).addTo(myMap);
+            L.marker([latitude, longitude], {icon: defaultIcon
+            }).addTo(myMap)
             // On affiche un marker sur la carte
         })
 }
 
-let getHomeArtId;
-let getShowArtId;
 
-if ( document.getElementById("getHomeArtId") !== null ){
-    getHomeArtId = document.getElementById("getHomeArtId").value;
+if (document.getElementById("getHomeArtId") !== null) {
+    let getHomeArtId = document.getElementById("getHomeArtId").value;
     oneArt(getHomeArtId)
 } else {
-    getShowArtId = document.getElementById("getShowArtId").value;
+    let getShowArtId = document.getElementById("getShowArtId").value;
     oneArt(getShowArtId)
 }
