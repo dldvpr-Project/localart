@@ -26,17 +26,19 @@ function oneArt(id) {
                 maxZoom: 20
             }).addTo(myMap)
             //L.marker([latitude, longitude]).addTo(myMap);
-            L.marker([latitude, longitude], {icon: defaultIcon
+            L.marker([latitude, longitude], {
+                icon: defaultIcon
             }).addTo(myMap)
             // On affiche un marker sur la carte
         })
 }
 
-
-if (document.getElementById("getHomeArtId") !== null) {
-    let getHomeArtId = document.getElementById("getHomeArtId").value;
-    oneArt(getHomeArtId)
-} else {
-    let getShowArtId = document.getElementById("getShowArtId").value;
-    oneArt(getShowArtId)
+if (window.location.pathname === '/' || window.location.pathname === '/show/') {
+    if (document.getElementById("getHomeArtId") !== null) {
+        let getHomeArtId = document.getElementById("getHomeArtId").value;
+        oneArt(getHomeArtId)
+    } else {
+        let getShowArtId = document.getElementById("getShowArtId").value;
+        oneArt(getShowArtId)
+    }
 }
