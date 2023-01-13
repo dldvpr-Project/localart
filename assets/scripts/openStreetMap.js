@@ -1,15 +1,14 @@
 import * as L from 'leaflet';
-import m from "../images/icons/camera-outline.svg"
+import marker from "../images/icons/camera.png"
 
 function centeredView(myLatitude, myLongitude) {
     return L.map('map').setView([myLatitude, myLongitude], 15);
 }
 
 const defaultIcon = L.icon({
-    iconUrl: m,
-    iconSize: [40, 50],
+    iconUrl: marker,
+    iconSize: [50, 50],
     iconAnchor: [2, 2],
-    popupAnchor: [0, -2]
 });
 
 function oneArt(id) {
