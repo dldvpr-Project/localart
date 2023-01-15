@@ -45,24 +45,30 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 text-center mb-5">
-        <h1>Créer la fiche d'une oeuvre</h1>
+            <h1>Créer la fiche d'une oeuvre</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-lg-6 d-flex justify-content-center">{{ include('components/_map.html.twig') }}</div>
-        <div class="col-12 col-lg-6 d-flex justify-content-center">
-            <div class="mt-md-4">
-                {{ form_start(form) }}
-                <div class="form-outline form-white mb-4">
+        <div class="col-12 col-lg-6">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="form-group w-50">
                     {{ form_row(form.title) }}
                 </div>
-                <div class="form-outline form-white mb-4">
+            </div>
+            <div class="form-row">
+                <div class="form-group w-50">
                     {{ form_row(form.pictureArt) }}
                 </div>
-                <div class="form-outline form-white mb-4">
+            </div>
+            <div class="form-row">
+                <div class="form-group w-50">
                     {{ form_row(form.description) }}
                 </div>
-                <div class="form-outline form-white mb-4">
+            </div>
+            <div class="form-row">
+                <div class="form-group w-50">
                     {{ form_row(form.city) }}
                 </div>
                 <div hidden>
@@ -72,12 +78,11 @@
                     {{ form_row(form.longitude) }}
                 </div>
                 {{ form_row(form._token) }}
-                <button type="submit" class="btn btn-outline-light btn-lg px-5"
-                        value="Valider">
-                    Créer
-                </button>
+                    <button type="submit" class="btn btn-outline-light btn-lg px-5"
+                            value="Valider">
+                        Créer
+                    </button>
                 {{ form_end(form) }}
             </div>
         </div>
     </div>
-</div>
