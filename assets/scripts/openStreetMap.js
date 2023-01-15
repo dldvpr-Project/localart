@@ -28,12 +28,11 @@ function oneArt(id) {
         })
 }
 
-if (window.location.pathname === '/' || window.location.pathname === '/show/') {
-    if (document.getElementById("getHomeArtId") !== null) {
-        let getHomeArtId = document.getElementById("getHomeArtId").value;
-        oneArt(getHomeArtId)
-    } else {
-        let getShowArtId = document.getElementById("getShowArtId").value;
-        oneArt(getShowArtId)
-    }
+if (document.getElementById("getHomeArtId") !== null) {
+    let getHomeArtId = document.getElementById("getHomeArtId").value;
+    oneArt(getHomeArtId)
+}
+if (document.getElementById('getShowArtId') !== null) {
+    let getShowArtId = document.getElementById("getShowArtId").value;
+    oneArt(getShowArtId)
 }
