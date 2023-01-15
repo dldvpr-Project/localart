@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\ArtCard;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -47,7 +48,13 @@ class ArtCardType extends AbstractType
             'required' => 'Une ville est obligatoire.',
             'constraints' => [
                 new NotBlank(['message' => 'Le champ ne peut être vide.']),
-            ]]);
+            ]])
+            ->add('latitude', NumberType::class, [
+                'attr' => ['class' => 'hidden']
+            ])
+            ->add('longitude', NumberType::class, [
+                'attr' => ['class' => 'hidden']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
