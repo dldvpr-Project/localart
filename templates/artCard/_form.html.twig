@@ -1,3 +1,4 @@
+{#
 <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8">
@@ -18,10 +19,10 @@
                         <div class="form-outline form-white mb-4">
                             {{ form_row(form.city) }}
                         </div>
-                        <div>
+                        <div hidden>
                             {{ form_row(form.latitude) }}
                         </div>
-                        <div>
+                        <div hidden>
                             {{ form_row(form.longitude) }}
                         </div>
                         <div>
@@ -35,6 +36,50 @@
                         {{ form_end(form) }}
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+#}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+        <h1>Créer la fiche d'une oeuvre</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">{{ include('components/_map.html.twig') }}</div>
+        <div class="col-12 col-lg-6">
+            <div class="mt-md-4">
+                {{ form_start(form) }}
+                <div class="form-outline form-white mb-4">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="form-outline form-white mb-4">
+                    {{ form_row(form.pictureArt) }}
+                </div>
+                <div class="form-outline form-white mb-4">
+                    {{ form_row(form.description) }}
+                </div>
+                <div class="form-outline form-white mb-4">
+                    {{ form_row(form.city) }}
+                </div>
+                <div hidden>
+                    {{ form_row(form.latitude) }}
+                </div>
+                <div hidden>
+                    {{ form_row(form.longitude) }}
+                </div>
+                <div>
+                    {{ include('components/_map.html.twig') }}
+                </div>
+                {{ form_row(form._token) }}
+                <button type="submit" class="btn btn-outline-light btn-lg px-5"
+                        value="Valider">
+                    Créer
+                </button>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
