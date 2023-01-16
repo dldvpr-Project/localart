@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArtistRepository;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
 class Artist extends User
@@ -39,7 +40,7 @@ class Artist extends User
 
     public function getUrlProfilPicture(): ?string
     {
-        return $this->urlProfilPicture;
+        return '/' . $_ENV['PICTURE_USER_FOLDER'] . $this->urlProfilPicture;
     }
 
     public function setUrlProfilPicture(?string $urlProfilPicture): self
