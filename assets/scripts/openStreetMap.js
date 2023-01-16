@@ -7,8 +7,9 @@ function centeredView(myLatitude, myLongitude) {
 
 const defaultIcon = L.icon({
     iconUrl: marker,
-    iconSize: [50, 50],
-    iconAnchor: [2, 2],
+    iconSize:     [40, 40],
+    iconAnchor:   [20, 40], // CHANGE HERE
+    popupAnchor:  [0, -35],
 });
 
 function oneArt(id) {
