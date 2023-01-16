@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="form-login card bg-dark text-white">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                <p class="text-white-50 mb-5">Entrer votre adresse mail et mot de passe!</p>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="email" id="username" name="_username"
+                                           class="form-control form-control-lg"
+                                           value="{{ last_username }}"/>
+                                    <label class="form-label" for="username">Email</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="password" name="_password"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="password">Password</label>
+                                </div>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,143 @@
+/* ---------- VARIABLES ---------- */
+:root {
+  --box-shadow: 0px 6px 9px 0px rgb(0 0 0 / 15%);
+  --box-shadow-nav: rgb(0 0 0 / 22%) 0px 2 18px 0px;
+  --text-color: white;
+  --background: #272727f1;
+}
+
+/* ---------- FONTS ---------- */
+@font-face {
+  font-family: 'Oswald';
+  src: url('../fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
+}
+
+/* ---------- GLOBAL POLICIES ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 10px;
+  color: var(--text-color);
+  background-color: var(--background);
+  text-align: justify;
+}
+
+ul, li, a {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.card {
+  box-shadow: var(--box-shadow);
+}
+
+form label {
+  font-size: 1rem;
+}
+
+/* ---------- NAV BAR ---------- */
+
+.navbar {
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+}
+
+/* ---------- HOME PAGE ---------- */
+
+.art-homepage {
+  width: 35rem;
+}
+
+.picture-homepage {
+  width: 35rem;
+  height: 35rem;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.description-homepage {
+  font-size: 1rem;
+}
+
+.picture-more-art {
+  width: 25rem;
+  height: 25rem;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+
+/* ---------- FORM ADMIN ARTIST CREATE ---------- */
+
+.card-register {
+  border-radius: 1.6rem;
+}
+
+.description-artistType {
+  font-size: 0.8rem;
+}
+
+.area-artisteType {
+  height: 10em;
+}
+
+/* ---------- ARTIST CARD ---------- */
+
+.artist-card {
+  margin: 1.5rem;
+  width: 20rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-img {
+  aspect-ratio: 2/1;
+  object-fit: contain;
+  object-position: 50% 50%;
+  height: 15rem;
+}
+
+/* ---------- FORM LOGIN ---------- */
+
+.form-login {
+  border-radius: 1.6rem;
+}
+
+/* ---------- CARD DETAIL  ---------- */
+
+.show-card-detail {
+  margin-top: 6rem;
+}
+
+.show-card-title {
+  font-size: 1.3rem;
+}
+
+.show-card-description, .show-card-city, .show-card-user {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+/* ---------- CARD DETAIL  ---------- */
+
+#map {
+  height: 35rem;
+  width: 35rem;
+}
+

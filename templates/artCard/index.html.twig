@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des artCards{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid container-lg mt-3">
+        <div class="row justify-content-center">
+            {{ include ('components/_genericFlashMessage.html.twig') }}
+            {% for artCard in artCards %}
+                <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
+                    <img class="card-img img-fluid img-thumbnail bg-black"
+                         src="{{ artCard.pictureArt }}" alt="This is a picture of an art"/>
+                    <div class="mt-1 card-body">
+                        <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
+                        <div class="d-flex justify-content-around">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('artCard_edit', {'id': artCard.id}) }}"
+                                   class="btn btn-success text-white">Edit</a>
+                                <form method="post" action="{{ path('artCard_delete', {'id': artCard.id}) }}"
+                                      onsubmit="return confirm('Confirmez-vous la suppression de cette oeuvre ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ artCard.id) }}">
+                                    <button class="btn btn-danger text-white">delete</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

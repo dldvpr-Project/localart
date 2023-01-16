@@ -1,0 +1,79 @@
+<nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"
+                aria-controls="offcanvasNavbarDark">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Local ' <span class="text-danger">Art</span></a>
+        <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbarDark"
+             aria-labelledby="offcanvasNavbarDarkLabel">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menu</h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column">
+                <form class="d-flex mt-3 mb-5" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav flex-grow-1 pe-3">
+                    {% if app.user %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <h4 class="text-center">Gestion admin</h4>
+                            <li class="nav-item text-center pt-2">
+                                <a class="nav-link" href="{{ path('artCard_pending') }}">Nouveaux pings</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" href="{{ path('user_index') }}">Gestion utilisateurs</a>
+                            </li>
+                            <li class="nav-item text-center pb-3 border-bottom">
+                                <a class="nav-link" href="{{ path('artist_showAll') }}">Gestion artistes</a>
+                            </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_ARTIST') or is_granted('ROLE_ADMIN') %}
+                            <h4 class="text-center pt-3">Mon compte</h4>
+                            <li class="nav-item text-center pt-3">
+                                <a class="nav-link" aria-current="page" href="{{ path('user_show') }}">Mon profil</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" aria-current="page" href="{{ path('artCard_new') }}">Poster une oeuvre</a>
+                            </li>
+                            <li class="nav-item text-center border-bottom pb-3">
+                                <a class="nav-link" href="#">Mes pings</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="nav-item text-center pt-3">
+                        <a class="nav-link" aria-current="page" href="{{ path('home_index') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="{{ path('artist_showAll') }}">Artistes</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="{{ path('artCard_index') }}">Oeuvres</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="#">Carte</a>
+                    </li>
+                </ul>
+                <div class="d-flex justify-content-between">
+                    {% if app.user %}
+                    <ul class="navbar-nav flex-grow-1 pe-3">
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+                        </li>
+                        {% else %}
+                            <li class="nav-item text-center">
+                                <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" href="{{ path('register_user') }}">S'inscrire</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

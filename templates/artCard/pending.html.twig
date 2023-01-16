@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}En attente de validation{% endblock %}
+
+{% block body %}
+    <div class="container-fluid container-lg mt-3">
+        <div class="row justify-content-center">
+            {{ include ('components/_genericFlashMessage.html.twig') }}
+            {% for artCard in artCards %}
+                <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
+                    <img class="card-img img-fluid img-thumbnail bg-black"
+                         src="{{ artCard.pictureArt }}" alt="This is the profil picture of an art"/>
+                    <div class="mt-1 card-body">
+                        <h1 class="card-title m-0 text-center">{{ artCard.title }}</h1>
+                        <div class="d-flex justify-content-around">
+                                <a href="{{ path('artCard_pending_show', {'id': artCard.id}) }}"
+                                   class="btn btn-success text-white">Voir Plus</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
