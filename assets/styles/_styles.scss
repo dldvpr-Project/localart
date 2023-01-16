@@ -141,3 +141,14 @@ form label {
   width: 35rem;
 }
 
+/* ---------- FORM NEW ARTCARD  ---------- */
+
+.form-artCard-container{
+  height: 35rem;
+}
+
+.form-artCard-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

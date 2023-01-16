@@ -40,7 +40,7 @@ class ArtCardType extends AbstractType
                     ]),
                 ]])
             ->add('description', TextareaType::class, [
-                'label' => "Description de l'oeuvre",
+                'label' => "Description",
                 'attr' => ['class' => 'area-artisteType']
             ])
         ->add('city', TextType::class, [

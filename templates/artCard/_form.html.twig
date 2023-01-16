@@ -42,47 +42,41 @@
 </div>
 #}
 
-<div class="container-fluid mh-100">
+<div class="container-fluid">
     <div class="row align-items-center">
         <div class="col-12 col-lg-6 d-flex justify-content-center">{{ include('components/_map.html.twig') }}</div>
-        <div class="col-12 col-lg-6 d-flex justify-content-center">
+        <div class="col-12 col-lg-6 d-flex justify-content-center form-artCard-container">
             {{ form_start(form) }}
-            <div class="form-row">
-                <div class="form-group w-50">
+            <div class="form-group row form-artCard">
                     {{ form_label(form.title) }}
                     {{ form_widget(form.title) }}
-                </div>
             </div>
-            <div class="form-row">
-                <div class="form-group w-50">
+            <div class="form-group row form-artCard">
                     {{ form_label(form.pictureArt) }}
                     {{ form_widget(form.pictureArt) }}
-                </div>
             </div>
-            <div class="form-row">
-                <div class="form-group w-50">
+            <div class="form-group row form-artCard">
                     {{ form_label(form.description) }}
                     {{ form_widget(form.description) }}
-                </div>
             </div>
-            <div class="form-row">
-                <div class="form-group w-50">
+            <div class="form-group row form-artCard">
                     {{ form_label(form.city) }}
                     {{ form_widget(form.city) }}
-                </div>
-                <div hidden>
-                    {{ form_row(form.latitude) }}
-                </div>
-                <div hidden>
-                    {{ form_row(form.longitude) }}
-                </div>
-                {{ form_row(form._token) }}
-                    <button type="submit" class="btn btn-outline-light btn-lg px-5"
-                            value="Valider">
-                        Créer
-                    </button>
-                {{ form_end(form) }}
             </div>
+            <div hidden>
+                {{ form_row(form.latitude) }}
+            </div>
+            <div hidden>
+                {{ form_row(form.longitude) }}
+            </div>
+            {{ form_row(form._token) }}
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-light btn-lg px-5"
+                        value="Valider">
+                    Créer
+                </button>
+            </div>
+            {{ form_end(form) }}
         </div>
     </div>
 </div>
