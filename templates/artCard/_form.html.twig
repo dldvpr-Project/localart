@@ -42,34 +42,33 @@
 </div>
 #}
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 text-center mb-5">
-            <h1>Créer la fiche d'une oeuvre</h1>
-        </div>
-    </div>
-    <div class="row">
+<div class="container-fluid mh-100">
+    <div class="row align-items-center">
         <div class="col-12 col-lg-6 d-flex justify-content-center">{{ include('components/_map.html.twig') }}</div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 d-flex justify-content-center">
             {{ form_start(form) }}
             <div class="form-row">
                 <div class="form-group w-50">
-                    {{ form_row(form.title) }}
+                    {{ form_label(form.title) }}
+                    {{ form_widget(form.title) }}
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group w-50">
-                    {{ form_row(form.pictureArt) }}
+                    {{ form_label(form.pictureArt) }}
+                    {{ form_widget(form.pictureArt) }}
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group w-50">
-                    {{ form_row(form.description) }}
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group w-50">
-                    {{ form_row(form.city) }}
+                    {{ form_label(form.city) }}
+                    {{ form_widget(form.city) }}
                 </div>
                 <div hidden>
                     {{ form_row(form.latitude) }}
@@ -86,3 +85,4 @@
             </div>
         </div>
     </div>
+</div>
