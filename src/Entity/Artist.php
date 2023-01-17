@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArtistRepository;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
 class Artist extends User

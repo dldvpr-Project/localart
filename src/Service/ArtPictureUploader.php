@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\ArtCard;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 

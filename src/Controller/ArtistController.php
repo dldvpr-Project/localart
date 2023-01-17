@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Artist;
 use App\Form\ArtistModifyType;
 use App\Repository\ArtistRepository;
 use Symfony\Component\HttpFoundation\Request;
