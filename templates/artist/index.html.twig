@@ -11,7 +11,7 @@
                     <img class="card-img img-fluid img-thumbnail bg-black"
                          src="{{ artist.urlProfilPicture }}" alt="This is the profil picture of an artist"/>
                     <div class="mt-1 card-body">
-                        <h1 class="card-title m-0 text-center">{{ artist.nickName }}</h1>
+                        <h1 class="card-title m-0 text-center text-dark">{{ artist.nickName }}</h1>
                         <div class="d-flex justify-content-around">
                             {% if is_granted('ROLE_ADMIN') %}
                                 <a href="{{ path('admin_edit_artist', {'id': artist.id}) }}"
