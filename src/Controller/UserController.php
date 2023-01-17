@@ -32,7 +32,7 @@ class UserController extends AbstractController
     {
 
         if ($this->getUser() === null) {
-            return $this->redirectToRoute('artist_showAll');
+            return $this->redirectToRoute('home_index');
         }
 
         /** @var User $user **/
@@ -50,7 +50,7 @@ class UserController extends AbstractController
     public function edit(Request $request, UserRepository $userRepository): Response
     {
         if ($this->getUser() === null) {
-            return $this->redirectToRoute('artist_showAll');
+            return $this->redirectToRoute('home_index');
         }
 
         /** @var User $user */
