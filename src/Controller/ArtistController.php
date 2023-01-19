@@ -30,7 +30,7 @@ class ArtistController extends AbstractController
     {
 
         if ($this->getUser() === null) {
-            return $this->redirectToRoute('artist_showAll');
+            return $this->redirectToRoute('home_index');
         }
 
         /** @var User $user * */
@@ -48,7 +48,7 @@ class ArtistController extends AbstractController
     public function edit(Request $request, ArtistRepository $artistRepository): Response
     {
         if ($this->getUser() === null) {
-            return $this->redirectToRoute('artist_showAll');
+            return $this->redirectToRoute('home_index');
         }
 
         /** @var User $user */

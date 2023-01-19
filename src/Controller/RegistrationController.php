@@ -37,7 +37,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('login');
         }
 
         return $this->renderForm('user/new.html.twig', [
@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
             $artist->setRoles(["ROLE_ARTIST"]);
             $entityManager->persist($artist);
             $entityManager->flush();
-            return $this->redirectToRoute('artist_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('artist_showAll', [], Response::HTTP_SEE_OTHER);
 
         }
         return $this->renderForm('admin/adminArtistType.html.twig', [
