@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\ArtistModifyType;
+use App\Form\AdminModifyArtistType;
 use App\Repository\ArtistRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +53,7 @@ class ArtistController extends AbstractController
         /** @var User $user */
         $artist = $this->getUser();
 
-        $form = $this->createForm(ArtistModifyType::class, $artist);
+        $form = $this->createForm(AdminModifyArtistType::class, $artist);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

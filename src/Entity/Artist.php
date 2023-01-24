@@ -18,7 +18,7 @@ class Artist extends User
     private ?string $description;
 
     #[ORM\Column(type: 'string')]
-    private ?string $urlProfilPicture;
+    private ?string $profilPicture;
 
     public function getId(): ?int
     {
@@ -37,14 +37,14 @@ class Artist extends User
         return $this;
     }
 
-    public function getUrlProfilPicture(): ?string
+    public function getProfilPicture(): ?string
     {
-        return '/' . $_ENV['PICTURE_USER_FOLDER'] . $this->urlProfilPicture;
+        return '/' . $_ENV['PICTURE_USER_FOLDER'] . $this->profilPicture;
     }
 
-    public function setUrlProfilPicture(?string $urlProfilPicture): self
+    public function setProfilPicture(?string $profilPicture): self
     {
-        $this->urlProfilPicture = $urlProfilPicture;
+        $this->profilPicture = $profilPicture;
 
         return $this;
     }
