@@ -28,7 +28,7 @@ class ArtistFixtures extends Fixture
         $artist->setPassword($password);
         $artist->setRoles(['ROLE_ARTIST']);
         $artist->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
-        $artist->setUrlProfilPicture("_fixture_user_1.jpg");
+        $artist->setProfilPicture("_fixture_user_1.jpg");
         $this->addReference('artist_0', $artist);
         $manager->persist($artist);
 
@@ -46,7 +46,7 @@ class ArtistFixtures extends Fixture
                 '_fixture_user_2.jpg',
                 '_fixture_user_3.jpg'
             ]);
-            $artist->setUrlProfilPicture($picture);
+            $artist->setProfilPicture($picture);
             $this->addReference('artist_' . $i, $artist);
             $manager->persist($artist);
 
