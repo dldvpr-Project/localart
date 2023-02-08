@@ -18,7 +18,7 @@
                     <p class="description-homepage">{{ frontArt.description[:195] ~ (frontArt.description|length > 200 ? '...') }}
                         {% if frontArt.description|length > 200 %}
                         <a class="text-decoration-none text-danger pointer-event" href="{{ path('artCard_show', {id: frontArt.id}) }}">plus</a></p>
-                    {% endio %}
+                    {% endif %}
                 </div>
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center">
