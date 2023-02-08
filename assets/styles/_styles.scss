@@ -78,6 +78,12 @@ form label {
   max-width: 100%;
   object-fit: cover;
   object-position: 50% 50%;
+  filter: grayscale(100%) blur(0.07rem);
+}
+
+.picture-more-art:hover {
+  transition: 2s;
+  filter: grayscale(0%) blur(0);
 }
 
 
