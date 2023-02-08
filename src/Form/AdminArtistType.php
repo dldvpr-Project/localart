@@ -60,7 +60,7 @@ class AdminArtistType extends AbstractType
                 'label' => "Description de l'artiste",
                 'attr' => ['class' => 'area-artisteType']
             ])
-        ->add('urlProfilPicture', FileType::class, [
+        ->add('profilPicture', FileType::class, [
             'label' => 'Photo',
             'mapped' => false,
             'constraints' => [
