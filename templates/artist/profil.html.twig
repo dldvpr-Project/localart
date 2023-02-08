@@ -1,21 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte{% endblock %}
+{% block title %} {{ artist.nickname }} {% endblock %}
 
 {% block body %}
-    <div class="container-fluid container-lg mt-3">
-        <div class="row justify-content-center">
-                <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
-                    <img class="card-img img-fluid img-thumbnail bg-black"
-                         src="https://via.placeholder.com/300" alt="This is a place holder"/>
-                    <div class="mt-1 card-body">
-                        <h1 class="card-title m-0 text-center">{{ artist.nickname }}</h1>
-                        <div class="d-flex justify-content-around">
-                            <a href="{{ path('artist_edit') }}"
-                               class="btn btn-success text-white">Edit</a>
-                        </div>
-                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center mb-3">
+                <h1>" {{ artist.nickname }} "</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 d-flex justify-content-center">
+                <div class="art-homepage">
+                    <img class="picture-homepage img-fluid mb-3" src="{{ artist.profilPicture }}"
+                         alt="This is a profil picture">
                 </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <p class="description-homepage">{{ artist.description }}</p>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            {% if is_granted('ROLE_ARTIST') %}
+                <button class="btn btn-success col-sm-12 col-md-1 mx-2">Modifier le profil</button>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

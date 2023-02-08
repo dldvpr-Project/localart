@@ -7,23 +7,26 @@
         <div class="row justify-content-center">
             {{ include('components/_genericFlashMessage.html.twig') }}
             {% for artist in artists %}
-                <div class="card artist-card col-6 col-md-4 d-flex flex-column pe-auto p-1 p-lg-2">
-                    <img class="card-img img-fluid img-thumbnail bg-black"
-                         src="{{ artist.profilPicture }}" alt="This is the profil picture of an artist"/>
-                    <div class="mt-1 card-body">
-                        <h1 class="card-title m-0 text-center text-dark">{{ artist.nickName }}</h1>
-                        <div class="d-flex justify-content-around">
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('admin_edit_artist', {'id': artist.id}) }}"
-                                   class="btn btn-success text-white">Edit</a>
-                                <form method="post" action="{{ path('user_delete', {'id': artist.id}) }}"
-                                      onsubmit="return confirm('Confirmez-vous la suppression de cet artiste ?');">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ artist.id) }}">
-                                    <button class="btn btn-danger text-white">delete</button>
-                                </form>
-                            {% endif %}
+                <div class="card artist-card col-6 col-md-4 d-flex flex-column p-1 p-lg-2">
+                    <a href="{{ path('artist_profil', {'id': artist.id}) }}" class="text-decoration-none">
+                        <img class="card-img img-fluid img-thumbnail bg-black"
+                             src="{{ artist.profilPicture }}" alt="This is the profil picture of an artist"/>
+                        <div class="mt-1 card-body">
+                            <h1 class="card-title m-0 text-center text-dark">{{ artist.nickName }}</h1>
+                            <div class="d-flex justify-content-around">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a href="{{ path('admin_edit_artist', {'id': artist.id}) }}"
+                                       class="btn btn-success text-white">Edit</a>
+                                    <form method="post" action="{{ path('user_delete', {'id': artist.id}) }}"
+                                          onsubmit="return confirm('Confirmez-vous la suppression de cet artiste ?');">
+                                        <input type="hidden" name="_token"
+                                               value="{{ csrf_token('_delete' ~ artist.id) }}">
+                                        <button class="btn btn-danger text-white">delete</button>
+                                    </form>
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
