@@ -94,7 +94,7 @@ class ArtCardController extends AbstractController
         if (is_string($request->request->get('_token')) || is_null($request->request->get('_token'))) {
             if ($this->isCsrfTokenValid('_delete' . $artCard->getId(), $request->request->get('_token'))) {
                 $pathFile = $artCard->getPictureArt();
-                unlink($pathFile);
+                unlink(getcwd() . $pathFile);
                 $artCardRepository->remove($artCard, true);
             } else {
                 throw new Exception(message: 'token should be string or null');
