@@ -58,14 +58,16 @@ form label {
 
 .art-homepage {
   width: 35rem;
+  height: auto;
 }
 
 .picture-homepage {
-  width: 35rem;
-  height: 35rem;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: 50% 50%;
+  width: 35rem; /* définit la largeur de l'image à 35 rem */
+  height: auto; /* définit la hauteur de l'image à 35 rem */
+  max-width: 100%; /* assure que l'image ne dépasse pas la largeur de son conteneur */
+  max-height: 100%; /* assure que l'image ne dépasse pas la hauteur de son conteneur */
+  object-fit: contain; /* permet de faire en sorte que l'image remplisse tout l'espace alloué tout en gardant les mêmes proportions et en évitant le rognage */
+  object-position: 50% 50%; /* centre l'image horizontalement et verticalement dans son conteneur */
 }
 
 .description-homepage {

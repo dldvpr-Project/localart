@@ -24,19 +24,11 @@ class ArtistController extends AbstractController
         ]);
     }
 
-    #[Route('/profil', name: 'profil')]
-    public function show(ArtistRepository $artistRepository): Response
+    #[Route('/profil/{id}', name: 'profil')]
+    public function show(ArtistRepository $artistRepository, int $id): Response
     {
 
-        if ($this->getUser() === null) {
-            return $this->redirectToRoute('home_index');
-        }
-
-        /** @var User $user * */
-        $user = $this->getUser();
-        $artistId = $user->getId();
-
-        $artist = $artistRepository->findOneBy(['id' => $artistId]);
+        $artist = $artistRepository->findOneBy(['id' => $id]);
 
         return $this->render('artist/profil.html.twig', [
             'artist' => $artist
