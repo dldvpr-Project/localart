@@ -18,6 +18,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: calc(10px + 0.5vw);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -33,6 +37,25 @@ ul, li, a {
   padding-left: 0;
   margin: 0;
   cursor: pointer;
+  font-size: calc(1.125rem + 0.2vw);
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: calc(2.5rem + 1vw);
+}
+
+h2 {
+  font-size: calc(2rem + 0.5vw);
+}
+
+p {
+  font-size: calc(1rem + 0.2vw);
+  line-height: 1.5;
+}
+
+button {
+  font-size: calc(0.875rem + 0.2vw);
 }
 
 .card {
@@ -50,31 +73,28 @@ form label {
   margin-bottom: 1rem;
 }
 
-.nav-link {
-  font-size: 1.3rem;
-}
-
 /* ---------- HOME PAGE ---------- */
 
 .art-homepage {
-  width: 35rem;
+  width: 30rem;
 }
 
 .picture-homepage {
-  width: 35rem;
-  height: 35rem;
+  width: 30rem;
+  height: 30rem;
+  margin: auto;
   max-width: 100%;
   object-fit: cover;
   object-position: 50% 50%;
 }
 
 .description-homepage {
-  font-size: 1rem;
+  width: 30rem;
 }
 
 .picture-more-art {
-  width: 25rem;
-  height: 25rem;
+  width: 20rem;
+  height: 20rem;
   max-width: 100%;
   object-fit: cover;
   object-position: 50% 50%;
@@ -93,10 +113,6 @@ form label {
   border-radius: 1.6rem;
 }
 
-.description-artistType {
-  font-size: 0.8rem;
-}
-
 .area-artisteType {
   height: 10em;
 }
@@ -105,11 +121,11 @@ form label {
 
 .artist-card {
   margin: 1.5rem;
-  width: 20rem;
+  width: 17rem;
 }
 
-.card-title {
-  font-size: 1.5rem;
+.artist-card h1 {
+  font-size: calc(0.7rem + 1vw);
 }
 
 .card-img {
@@ -131,20 +147,15 @@ form label {
   margin-top: 6rem;
 }
 
-.show-card-title {
-  font-size: 1.3rem;
-}
-
 .show-card-description, .show-card-city, .show-card-user {
-  font-size: 1rem;
   margin: 1rem;
 }
 
 /* ---------- CARD DETAIL  ---------- */
 
 #map {
-  height: 35rem;
-  width: 35rem;
+  height: 30rem;
+  width: 30rem;
 }
 
 /* ---------- FORM NEW ARTCARD  ---------- */
