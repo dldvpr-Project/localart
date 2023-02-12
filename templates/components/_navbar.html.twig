@@ -35,10 +35,19 @@
                             <h4 class="text-center pt-3">Mon compte</h4>
                             <li class="nav-item text-center pt-3">
                                 {% if is_granted('ROLE_ARTIST') %}
-                                    <a class="nav-link" aria-current="page" href="{{ path('artist_profil') }}">Mon
-                                        profil</a>
+                                    <a class="nav-link" aria-current="page" href="{{ path('artist_myProfil') }}">
+                                        Mon profil</a>
                                 {% elseif is_granted ('ROLE_USER') %}
                                     <a class="nav-link" aria-current="page" href="{{ path('user_show') }}">Mon
+                                        profil</a>
+                                {% endif %}
+                            </li>
+                            <li class="nav-item text-center">
+                                {% if is_granted('ROLE_ARTIST') %}
+                                    <a class="nav-link" aria-current="  " href="{{ path('artist_edit') }}">
+                                        Modifier mon profil</a>
+                                {% elseif is_granted ('ROLE_USER') %}
+                                    <a class="nav-link" aria-current="page" href="{{ path('user_edit') }}">Modifier mon
                                         profil</a>
                                 {% endif %}
                             </li>
