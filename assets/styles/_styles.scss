@@ -76,7 +76,8 @@ form label {
 /* ---------- HOME PAGE ---------- */
 
 .art-homepage {
-  width: 30rem;
+  width: 35rem;
+  height: auto;
 }
 
 .picture-homepage {
@@ -84,7 +85,8 @@ form label {
   height: 30rem;
   margin: auto;
   max-width: 100%;
-  object-fit: cover;
+  max-height: 100%;
+  object-fit: contain;
   object-position: 50% 50%;
 }
 
@@ -120,6 +122,7 @@ form label {
 /* ---------- ARTIST CARD ---------- */
 
 .artist-card {
+  cursor: pointer;
   margin: 1.5rem;
   width: 17rem;
 }
@@ -133,6 +136,35 @@ form label {
   object-fit: contain;
   object-position: 50% 50%;
   height: 15rem;
+}
+
+.artist-card:hover {
+  scale: 1.05;
+  transition-duration: 1s;
+}
+
+.rotate-minus-15 {
+  transform: rotate(-15deg);
+}
+
+.rotate-minus-10 {
+  transform: rotate(-10deg);
+}
+
+.rotate-minus-5 {
+  transform: rotate(-5deg);
+}
+
+.rotate-5 {
+  transform: rotate(5deg);
+}
+
+.rotate-10 {
+  transform: rotate(10deg);
+}
+
+.rotate-15 {
+  transform: rotate(15deg);
 }
 
 /* ---------- FORM LOGIN ---------- */
@@ -160,7 +192,7 @@ form label {
 
 /* ---------- FORM NEW ARTCARD  ---------- */
 
-.form-artCard-container{
+.form-artCard-container {
   height: 35rem;
 }
 

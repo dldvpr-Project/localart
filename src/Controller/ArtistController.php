@@ -24,8 +24,8 @@ class ArtistController extends AbstractController
         ]);
     }
 
-    #[Route('/profil', name: 'profil')]
-    public function show(ArtistRepository $artistRepository): Response
+    #[Route('/profil', name: 'myProfil')]
+    public function myProfil(ArtistRepository $artistRepository): Response
     {
 
         if ($this->getUser() === null) {
@@ -37,6 +37,17 @@ class ArtistController extends AbstractController
         $artistId = $user->getId();
 
         $artist = $artistRepository->findOneBy(['id' => $artistId]);
+
+        return $this->render('artist/profil.html.twig', [
+            'artist' => $artist
+        ]);
+    }
+
+    #[Route('/profil/{id}', name: 'profil')]
+    public function show(ArtistRepository $artistRepository, int $id): Response
+    {
+
+        $artist = $artistRepository->findOneBy(['id' => $id]);
 
         return $this->render('artist/profil.html.twig', [
             'artist' => $artist
@@ -59,7 +70,7 @@ class ArtistController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $artistRepository->save($artist, true);
-            return $this->redirectToRoute('artist_profil');
+            return $this->redirectToRoute('artist_myProfil');
         }
 
         return $this->renderForm('artist/edit.html.twig', [

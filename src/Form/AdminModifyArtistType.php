@@ -42,6 +42,7 @@ class AdminModifyArtistType extends AbstractType
             ->add('profilPicture', FileType::class, [
                 'label' => 'Photo',
                 'mapped' => false,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '2M',
