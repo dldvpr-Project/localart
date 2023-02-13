@@ -42,16 +42,16 @@ ul, li, a {
 }
 
 h1 {
-  font-size: calc(2.5rem + 1vw);
+  font-size: calc(1.8rem + 1vw);
 }
 
 h2 {
-  font-size: calc(2rem + 0.5vw);
+  font-size: calc(1rem + 0.5vw);
 }
 
 p {
-  font-size: calc(1rem + 0.2vw);
-  line-height: 1.5;
+  font-size: calc(0.8rem + 0.2vw);
+  line-height: 1.2;
 }
 
 button {
@@ -75,16 +75,28 @@ form label {
 
 /* ---------- HOME PAGE ---------- */
 
+.page-wrapper {
+  height: 200vh;
+}
+
+.section {
+  height: 100vh;
+}
+
 .art-homepage {
-  width: 35rem;
+  width: 30rem;
   height: auto;
+}
+
+.container-art {
+  height: 30rem;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .picture-homepage {
   width: 30rem;
-  height: 30rem;
   margin: auto;
-  max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   object-position: 50% 50%;
@@ -108,6 +120,58 @@ form label {
   filter: grayscale(0%) blur(0);
 }
 
+.scroll-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  display: block;
+}
+
+
+
+.scroll-btn i {
+  margin-top: 2px;
+}
+
+.scroll-btn.show {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.scroll-btn.hide {
+  display: none;
+  animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
 
 /* ---------- FORM ADMIN ARTIST CREATE ---------- */
 
