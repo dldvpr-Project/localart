@@ -31,13 +31,29 @@
                                 <a class="nav-link" href="{{ path('artist_showAll') }}">Gestion artistes</a>
                             </li>
                         {% endif %}
-                        {% if is_granted('ROLE_USER') or is_granted('ROLE_ARTIST') or is_granted('ROLE_ADMIN') %}
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') or is_granted('ROLE_ARTIST') %}
                             <h4 class="text-center pt-3">Mon compte</h4>
                             <li class="nav-item text-center pt-3">
-                                <a class="nav-link" aria-current="page" href="{{ path('user_show') }}">Mon profil</a>
+                                {% if is_granted('ROLE_ARTIST') %}
+                                    <a class="nav-link" aria-current="page" href="{{ path('artist_myProfil') }}">
+                                        Mon profil</a>
+                                {% elseif is_granted ('ROLE_USER') %}
+                                    <a class="nav-link" aria-current="page" href="{{ path('user_show') }}">Mon
+                                        profil</a>
+                                {% endif %}
                             </li>
                             <li class="nav-item text-center">
-                                <a class="nav-link" aria-current="page" href="{{ path('artCard_new') }}">Poster une oeuvre</a>
+                                {% if is_granted('ROLE_ARTIST') %}
+                                    <a class="nav-link" aria-current="  " href="{{ path('artist_edit') }}">
+                                        Modifier mon profil</a>
+                                {% elseif is_granted ('ROLE_USER') %}
+                                    <a class="nav-link" aria-current="page" href="{{ path('user_edit') }}">Modifier mon
+                                        profil</a>
+                                {% endif %}
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" aria-current="page" href="{{ path('artCard_new') }}">Poster une
+                                    oeuvre</a>
                             </li>
                             <li class="nav-item text-center border-bottom pb-3">
                                 <a class="nav-link" href="#">Mes pings</a>
