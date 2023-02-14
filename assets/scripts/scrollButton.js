@@ -10,11 +10,11 @@ window.addEventListener("scroll", () => {
     }
 
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        scrollBtn.querySelector("i").classList.remove(arrowDown);
-        scrollBtn.querySelector("i").classList.add(arrowUp);
+        scrollBtn.querySelector(".scroll-btn-home").classList.remove(arrowDown);
+        scrollBtn.querySelector(".scroll-btn-home").classList.add(arrowUp);
     } else {
-        scrollBtn.querySelector("i").classList.remove(arrowUp);
-        scrollBtn.querySelector("i").classList.add(arrowDown);
+        scrollBtn.querySelector(".scroll-btn-home").classList.remove(arrowUp);
+        scrollBtn.querySelector(".scroll-btn-home").classList.add(arrowDown);
     }
 });
 

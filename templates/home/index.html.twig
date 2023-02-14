@@ -1,59 +1,46 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
-{% block title %}
-    Hello HomeController!
-{% endblock %}
+    {% block title %}Hello HomeController!{% endblock %}
 
-{% block body %}
-    <div class="home-wrapper">
-        <div class="home-section top-section">
-            <input type="hidden" value="{{ frontArt.id }}" id="getHomeArtId">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 text-center mb-3">
-                        <h1>{{ frontArt.title }}</h1>
-                        <h2 class="fst-italic">{{ frontArt.user.nickname }}</h2>
+    {% block body %}
+        <input type="hidden" value="{{ frontArt.id }}" id="getHomeArtId">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center mb-3">
+                    <h1>" {{ frontArt.title }} "</h1>
+                    <h2 class="fst-italic fs-4">{{ frontArt.user.nickname }}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6 d-flex justify-content-center">
+                    <div class="art-homepage">
+                        <img class="picture-homepage img-fluid mb-3" src="{{ frontArt.pictureArt }}">
+                        <p class="description-homepage mb-sm-5 mb-lg-0">{{ frontArt.description[:195] ~ (frontArt.description|length > 200 ? '...') }}
+                            {% if frontArt.description|length > 200 %}
+                            <a class="text-decoration-none text-danger pointer-event" href="{{ path('artCard_show', {id: frontArt.id}) }}">plus</a></p>
+                        {% endif %}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="container-art col-12 col-lg-6 d-flex justify-content-center">
-                        <div class="art-homepage d-flex flex-column align-items-center">
-                            <img class="picture-homepage img-fluid mb-3" src="{{ frontArt.pictureArt }}" alt="{{ frontArt.title }}">
-                            <div>
-                                <p class="description-homepage mb-sm-5 mb-lg-0">{{ frontArt.description[:195] ~ (frontArt.description|length > 200 ? '...') }}
-                                    {% if frontArt.description|length > 200 %}
-                                        <a class="text-decoration-none text-danger pointer-event" href="{{ path('artCard_show', {id: frontArt.id}) }}">plus</a>
-                                    {% endif %}
-                                </p>
-                            </div>
+                <div class="col-12 col-lg-6 d-flex justify-content-center mb-5 mb-lg-0">
+                    {{ include('components/_map.html.twig') }}
+                </div>
+            </div>
+            <div class="col-12 mt-lg-5 mt-5 mb-lg-0">
+                <h1 class="text-center">
+                    Découvrir d’autres oeuvres
+                </h1>
+                <div class="row mt-5">
+                    {% for art in arrayArt %}
+                        <div class="col-12 col-lg-3 my-5 d-flex flex-column align-items-center">
+                            <a href="{{ path('artCard_show', {id: art.id}) }}">
+                                <img class="img-fluid picture-more-art" src="{{ art.pictureArt }}">
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex justify-content-center">
-                        {{ include('components/_map.html.twig') }}
-                    </div>
+                    {% endfor %}
                 </div>
+                <button class="scroll-btn">
+                    <i class="fas fa-arrow-down scroll-btn-home"></i>
+                </button>
             </div>
         </div>
-        <div class="home-section bottom-section">
-            <div class="container-fluid">
-                <div class="col-12 mt-lg-5">
-                    <h2 class="text-center h1">
-                        Découvrir d’autres oeuvres
-                    </h2>
-                    <div class="row mt-5">
-                        {% for art in arrayArt %}
-                            <div class="col-12 col-lg-3 my-5 d-flex flex-column align-items-center">
-                                <a href="{{ path('artCard_show', {id: art.id}) }}">
-                                    <img class="img-fluid picture-more-art" src="{{ art.pictureArt }}" alt="{{ art.title }}">
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="scroll-btn">
-            <i class="fas fa-arrow-down"></i>
-        </button>
-    </div>
-{% endblock %}
+    {% endblock %}

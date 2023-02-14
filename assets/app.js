@@ -14,6 +14,7 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+import 'bootstrap'
 require('bootstrap');
 
 import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css'
