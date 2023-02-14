@@ -34,15 +34,18 @@ function registerMap() {
     let map = L.map('map').setView([0, 0], 2);
     let marker;
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        attribution: 'données © <a href="//openstreetmap.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
         minZoom: 5,
         maxZoom: 20
-    }).addTo(map);
+    }).addTo(map)
     marker = L.marker([0, 0], {
         icon: defaultIcon
     }).addTo(map);
     marker.bindPopup("Cliquez pour déplacer le marqueur").openPopup();
     map.on('click', updateMarkerPosition);
+    map.locate({setView: true, maxZoom: 15});
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
 
     function updateMarkerPosition(e) {
         let coord = e.latlng;
@@ -58,15 +61,9 @@ function registerMap() {
         document.querySelector("#art_card_longitude").value = e.latlng.lng;
     }
 
-    function onLocationError() {
-        setTimeout(function() {
-            map.locate({setView: true, maxZoom: 15});
-        }, 5000);
+    function onLocationError(e) {
+        alert("Erreur de géolocalisation : " + e.message);
     }
-
-    map.locate({setView: true, maxZoom: 15});
-    map.on('locationfound', onLocationFound);
-    map.on('locationerror', onLocationError);
 }
 
 if (document.getElementById('art_card_longitude') !== null && document.getElementById('art_card_latitude') !== null) {
