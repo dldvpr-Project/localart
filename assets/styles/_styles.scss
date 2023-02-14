@@ -75,15 +75,6 @@ form label {
 
 /* ---------- HOME PAGE ---------- */
 
-.home-wrapper {
-  height: 200vh;
-  position: relative;
-}
-
-.home-section {
-  height: 100vh;
-}
-
 .art-homepage {
   width: 30rem;
   height: auto;
@@ -135,7 +126,7 @@ form label {
   display: block;
 }
 
-.scroll-btn i {
+.scroll-btn-home {
   margin-top: 2px;
 }
 
