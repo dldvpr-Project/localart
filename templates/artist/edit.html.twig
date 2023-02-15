@@ -11,7 +11,7 @@
                         <div class="mt-md-4">
                             {{ form_start(form) }}
                             <h2 class="fw-bold mb-2 text-uppercase">Modifier mon compte</h2>
-                            <p class="description-artistType text-white-50 mb-5">Seul la description n'est pas
+                            <p class="description-artistType text-white-50 mb-5 fs-4">Seul la description n'est pas
                                 obligatoire.</p>
                             <div class="form-outline form-white mb-4">
                                 {{ form_row(form.nickname) }}
@@ -21,6 +21,9 @@
                             </div>
                             <div class="form-outline form-white mb-4">
                                 {{ form_row(form.description) }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form_row(form.email) }}
                             </div>
                             <button type="submit" class="btn btn-outline-light btn-lg px-5"
                                     value="Valider">

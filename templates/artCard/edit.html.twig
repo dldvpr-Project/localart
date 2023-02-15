@@ -6,32 +6,34 @@
     <div class="container-fluid vh-100">
         <div class="row align-items-center h-100">
             {{ include ('components/_genericFlashMessage.html.twig') }}
-            <div class="col-12 col-md-8 d-flex justify-content-center">
-                <div class="card-register card bg-dark text-white">
-                    <div class="card-body p-5 text-center">
-                        <div class="mt-md-4">
-                            {{ form_start(form) }}
-                            <h2 class="fw-bold mb-2 text-uppercase">Modifier une oeuvre</h2>
-                            <div class="form-outline form-white mb-4">
-                                {{ form_row(form.title) }}
+            <div class="col-12 d-flex justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card-register card bg-dark text-white">
+                        <div class="card-body p-5 text-center">
+                            <div class="mt-md-4">
+                                {{ form_start(form) }}
+                                <h2 class="fw-bold mb-2 text-uppercase">Modifier une oeuvre</h2>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.title) }}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.pictureArt) }}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.description) }}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form_row(form.city) }}
+                                </div>
+                                {{ form_row(form._token) }}
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-light btn-lg px-5"
+                                            value="Valider">
+                                        Modifier
+                                    </button>
+                                </div>
+                                {{ form_end(form) }}
                             </div>
-                            <div class="form-outline form-white mb-4">
-                                {{ form_row(form.pictureArt) }}
-                            </div>
-                            <div class="form-outline form-white mb-4">
-                                {{ form_row(form.description) }}
-                            </div>
-                            <div class="form-outline form-white mb-4">
-                                {{ form_row(form.city) }}
-                            </div>
-                            {{ form_row(form._token) }}
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-outline-light btn-lg px-5"
-                                        value="Valider">
-                                    Modifier
-                                </button>
-                            </div>
-                            {{ form_end(form) }}
                         </div>
                     </div>
                 </div>
