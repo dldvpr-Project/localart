@@ -7,6 +7,7 @@
 
 import './scripts/openStreetMap'
 import './scripts/rotateArtistCard'
+import './scripts/scrollButton'
 
 // any CSS you import will output into a single css file (app.scss in this case)
 import './styles/app.scss';
@@ -15,4 +16,5 @@ import './styles/app.scss';
 import './bootstrap';
 require('bootstrap');
 
+import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css'
 import '../node_modules/leaflet/dist/leaflet.css';
