@@ -7,38 +7,40 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                {{ include ('components/_genericFlashMessage.html.twig') }}
-                <div class="show-card-detail card float-right">
+                <input type="hidden" value="{{ artCard.id }}" id="getShowArtId">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-5">
-                            <img class="d-block w-100" src="{{  artCard.pictureArt }}" alt="">
-                        </div>
-                        <div class="col-sm-7 d-flex">
-                            <div class="card-block d-flex flex-column justify-content-between align-content-between">
-                                <h1 class="show-card-title card-title text-center">{{ artCard.title }}</h1>
-                                <p class="show-card-description">{{ artCard.description }}</p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="show-card-city">{{ artCard.city }}</p>
-                                    <p class="show-card-user">{{ artCard.user.nickname }}</p>
-                                </div>
-                                <div class="d-flex justify-content-around mb-2">
-                                    <form method="post" action="{{ path('artCard_validate', {'id': artCard.id}) }}"
-                                          onsubmit="return confirm('Confirmez-vous la validation de cette oeuvre ?');">
-                                        <input type="hidden" name="_token"
-                                               value="{{ csrf_token('_validate' ~ artCard.id) }}">
-                                        <button class="btn btn-success text-white">Validate</button>
-                                    </form>
-                                    <a href="{{ path('artCard_edit', {'id': artCard.id}) }}" class="btn btn-primary">Editer</a>
-                                    <form method="post" action="{{ path('artCard_delete', {'id': artCard.id}) }}"
-                                          onsubmit="return confirm('Confirmez-vous la suppression de cette oeuvre ?');">
-                                        <input type="hidden" name="_token"
-                                               value="{{ csrf_token('_delete' ~ artCard.id) }}">
-                                        <button class="btn btn-danger text-white">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="col-12 text-center mb-3">
+                            <h1>" {{ artCard.title }} "</h1>
+                            <h2 class="fst-italic fs-4">{{ artCard.user.nickname }}</h2>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-flex justify-content-center">
+                            <div class="art-homepage">
+                                <img class="picture-homepage img-fluid mb-3" src="{{ artCard.pictureArt }}">
+                                <p class="description-homepage">{{ artCard.description }}</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 d-flex justify-content-center">
+                            {{ include('components/_map.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around mb-2 my-5 p-2">
+                    <form method="post" action="{{ path('artCard_validate', {'id': artCard.id}) }}"
+                          onsubmit="return confirm('Confirmez-vous la validation de cette oeuvre ?');">
+                        <input type="hidden" name="_token"
+                               value="{{ csrf_token('_validate' ~ artCard.id) }}">
+                        <button class="btn btn-success text-white">Validate</button>
+                    </form>
+                    <a href="{{ path('artCard_edit', {'id': artCard.id}) }}" class="btn btn-primary">Editer</a>
+                    <form method="post" action="{{ path('artCard_delete', {'id': artCard.id}) }}"
+                          onsubmit="return confirm('Confirmez-vous la suppression de cette oeuvre ?');">
+                        <input type="hidden" name="_token"
+                               value="{{ csrf_token('_delete' ~ artCard.id) }}">
+                        <button class="btn btn-danger text-white">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
