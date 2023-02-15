@@ -1,38 +1,45 @@
-<div class="container-fluid">
-    <div class="row align-items-center">
-        <div class="col-12 col-lg-6 d-flex justify-content-center">{{ include('components/_map.html.twig') }}</div>
-        <div class="col-12 col-lg-6 d-flex justify-content-center form-artCard-container">
-            {{ form_start(form) }}
-            <div class="form-group row form-artCard">
-                    {{ form_label(form.title) }}
-                    {{ form_widget(form.title) }}
+<div class="container-fluid vh-100">
+    <div class="row align-items-lg-center h-100">
+        <div class="col-6 col-lg-6 d-flex justify-content-lg-center mb-4 mb-lg-0 align-self-center">
+            <div>{{ include('components/_map.html.twig') }}</div>
+        </div>
+        <div class="col-6 col-lg-6 d-flex justify-content-lg-center align-self-center">
+            <div class="card-register card bg-dark text-white form-artCard-container">
+                <div class="card-body p-5 text-center">
+                    {{ form_start(form) }}
+                    <div class="form-group row form-artCard">
+                        {{ form_label(form.title) }}
+                        {{ form_widget(form.title) }}
+                    </div>
+                    <div class="form-group row form-artCard">
+                        {{ form_label(form.pictureArt) }}
+                        {{ form_widget(form.pictureArt) }}
+                    </div>
+                    <div class="form-group row form-artCard">
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description) }}
+                    </div>
+                    <div class="form-group row form-artCard">
+                        {{ form_label(form.city) }}
+                        {{ form_widget(form.city) }}
+                    </div>
+                    <div hidden>
+                        {{ form_row(form.latitude) }}
+                    </div>
+                    <div hidden>
+                        {{ form_row(form.longitude) }}
+                    </div>
+                    {{ form_row(form._token) }}
+                    <div class="text-center mt-5">
+                        <button type="submit" class="btn btn-outline-light btn-lg px-5 d-block mx-auto"
+                                value="Valider">
+                            Créer
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
             </div>
-            <div class="form-group row form-artCard">
-                    {{ form_label(form.pictureArt) }}
-                    {{ form_widget(form.pictureArt) }}
-            </div>
-            <div class="form-group row form-artCard">
-                    {{ form_label(form.description) }}
-                    {{ form_widget(form.description) }}
-            </div>
-            <div class="form-group row form-artCard">
-                    {{ form_label(form.city) }}
-                    {{ form_widget(form.city) }}
-            </div>
-            <div hidden>
-                {{ form_row(form.latitude) }}
-            </div>
-            <div hidden>
-                {{ form_row(form.longitude) }}
-            </div>
-            {{ form_row(form._token) }}
-            <div class="text-center">
-                <button type="submit" class="btn btn-outline-light btn-lg px-5"
-                        value="Valider">
-                    Créer
-                </button>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
 </div>
+

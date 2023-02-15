@@ -14,12 +14,10 @@
 
 /* ---------- GLOBAL POLICIES ---------- */
 
+
+
 * {
   box-sizing: border-box;
-}
-
-html {
-  font-size: calc(10px + 0.5vw);
 }
 
 body {
@@ -37,25 +35,7 @@ ul, li, a {
   padding-left: 0;
   margin: 0;
   cursor: pointer;
-  font-size: calc(1.125rem + 0.2vw);
   line-height: 1.5;
-}
-
-h1 {
-  font-size: calc(1.8rem + 1vw);
-}
-
-h2 {
-  font-size: calc(1rem + 0.5vw);
-}
-
-p {
-  font-size: calc(0.8rem + 0.2vw);
-  line-height: 1.2;
-}
-
-button {
-  font-size: calc(0.875rem + 0.2vw);
 }
 
 .card {
@@ -63,7 +43,7 @@ button {
 }
 
 form label {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 /* ---------- NAV BAR ---------- */
@@ -113,6 +93,7 @@ form label {
 }
 
 .scroll-btn {
+  z-index: 2;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -181,7 +162,7 @@ form label {
 }
 
 .artist-card h1 {
-  font-size: calc(0.7rem + 1vw);
+  font-size: 1.2rem;
 }
 
 .card-img {
@@ -239,6 +220,7 @@ form label {
 /* ---------- CARD DETAIL  ---------- */
 
 #map {
+  z-index: 0;
   height: 30rem;
   width: 30rem;
 }
@@ -254,3 +236,4 @@ form label {
   flex-direction: column;
   justify-content: space-between;
 }
+
