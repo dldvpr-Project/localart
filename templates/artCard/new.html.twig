@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer une art card{% endblock %}
+{% block title %}Créer une oeuvre{% endblock %}
 
 {% block body %}
+<div class="container-fluid">
+<div class="row">
+        <div class="col-12 text-center">
+            <h2 class="col fst-italic">Ajouter une oeuvre</h2>
+        </div>
+    </div>
     {{ include('artCard/_form.html.twig') }}
+</div>
 {% endblock %}

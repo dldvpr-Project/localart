@@ -10,7 +10,7 @@
             {% for user in users %}
                 <div class="card artist-card col-6 col-md-4 d-flex flex-column  p-1 p-lg-2">
                     <img class="card-img img-fluid img-thumbnail bg-black"
-                         src="https://via.placeholder.com/300" alt="This is a place holder"/>
+                         src="{{ asset('build/images/users/userPP.png') }}" alt="This is a place holder"/>
                     <div class="mt-1 card-body">
                         <h1 class="card-title m-0 text-center text-dark">{{ user.nickName }}</h1>
                         <div class="d-flex justify-content-around">
